@@ -1,0 +1,9 @@
+.project{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px black;
+    width: 10vmax;
+    padding:20px;
+    margin-bottom: 20px;
+}
