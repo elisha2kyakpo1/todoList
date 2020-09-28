@@ -14,6 +14,16 @@ const renderPage = (() => {
     const projectAndTodoContainer = document.createElement("div");
     projectAndTodoContainer.setAttribute("id", "projectAndTodoContainer");
     content.append(projectAndTodoContainer);
+
+    const projects = document.createElement("div");
+    projects.setAttribute("id", "projects");
+
+    projectAndTodoContainer.append(projects);
+
+    const projectsListContainer = document.createElement("div");
+    projectsListContainer.setAttribute("id", "projectsListContainer");
+
+    projects.append(projectsListContainer);
 })();
 
 export { renderPage }

@@ -75,21 +75,21 @@ const renderProject = (project) => {
 }
 
 
-//Renders the projects section
-const renderProjects = (() => {
+// //Renders the projects section
+// const renderProjects = (() => {
 
-    const projectAndTodoContainer = document.querySelector("#projectAndTodoContainer");
+//     const projectAndTodoContainer = document.querySelector("#projectAndTodoContainer");
 
-    const projects = document.createElement("div");
-    projects.setAttribute("id", "projects");
+//     const projects = document.createElement("div");
+//     projects.setAttribute("id", "projects");
 
-    projectAndTodoContainer.append(projects);
+//     projectAndTodoContainer.append(projects);
 
-    const projectsListContainer = document.createElement("div");
-    projectsListContainer.setAttribute("id", "projectsListContainer");
+//     const projectsListContainer = document.createElement("div");
+//     projectsListContainer.setAttribute("id", "projectsListContainer");
 
-    projects.append(projectsListContainer);
-})();
+//     projects.append(projectsListContainer);
+// })();
 
 const renderProjectList = () => {
 
