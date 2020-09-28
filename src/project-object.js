@@ -6,7 +6,6 @@ const projectFactory = (title) => {
 
     const projectTodoListTitles = [];
 
-    //Used to add toDo objects to the project list
     function addToProjectTodoList(todoObject) {
         projectTodoList.push(todoObject);
     }
@@ -19,22 +18,17 @@ const projectFactory = (title) => {
         projectList.splice(projectList.indexOf(project), 1);
     }
 
-    function changeTitle(newTitle) {
-        return this.title = newTitle;
-    }
-
-
-
     return {
         title,
-        changeTitle,
         projectTodoList, projectTodoListTitles,
         addToProjectTodoList, removeFromProjectList,
     }
 }
 
+//Project objects stored in a list
 let projectObjectList = [];
 
+//Create the project objects and push them to the above list
 function createProjects() {
     storeProjects.getProjectList();
     const projectObjectListTitles = [];
@@ -49,17 +43,17 @@ function createProjects() {
     });
 }
 
+//Remove proejcts from the list above
 function removeProject(project) {
     if (projectObjectList.length > 1) {
         projectObjectList.splice(projectObjectList.indexOf(project), 1);
     }
     else if (projectObjectList.length == 1) {
-        projectObjectList = []
-        console.log(projectObjectList)
+        projectObjectList = [];
+        console.log(projectObjectList);
     };
 }
-//Why have to click twice!?
-createProjects();
+
 
 
 export { projectFactory, projectObjectList, createProjects, removeProject }

@@ -1,5 +1,4 @@
 import { projectObjectList } from "./project-object.js";
-import { storeTodos } from "./storage.js";
 
 const todoFactory = (title, dueDate, priority, note, doneStatus = "Incomplete") => {
 

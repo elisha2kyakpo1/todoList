@@ -1,17 +1,15 @@
-import { projectFactory, createProjects, projectObjectList, projectObjectListTitles } from "./project-object.js";
-import { todoFactory, createTodos } from "./todo-object.js"
+import { projectObjectList } from "./project-object.js";
 
+//Keep a list of projects, added to localStorage
 const projectList = [];
 
-// See if I can make this deletable
-// Create projects on load
+//Create the default project if no others are present
 if (localStorage.length == 0) {
-    projectList.push("Default");
+    projectList.push("Default Project");
 }
 
 
 const storeProjects = (() => {
-
 
     function setProjectList() {
         projectList.forEach(project => {
@@ -35,6 +33,7 @@ const storeProjects = (() => {
         }
     }
 
+    //Add and remove projects to the project list so they can be saved in localStorage
     const addProjectToList = (project) => {
         getProjectList();
         projectList.push(project);
@@ -59,18 +58,6 @@ const storeProjects = (() => {
 })();
 
 const storeTodos = (() => {
-
-    // function setTodoList() {
-    //     const storedProjectTodoList = [];
-    //     projectObjectList.forEach(project => {
-    //         project.projectTodoList.forEach(todo => {
-    //             localStorage.setItem(project.title + " " + todo.title + " todo info", todo.todoInfo);
-    //             storedProjectTodoList.push(todo.title)
-    //         })
-    //         localStorage.setItem(project.title + " project todo list", storedProjectTodoList);
-    //     });
-    // }
-
 
     function setTodoList(project) {
         const storedProjectTodoList = [];

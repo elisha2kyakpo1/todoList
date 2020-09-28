@@ -1,24 +1,22 @@
 import { todoFactory, createTodos } from "./todo-object.js"
-import { storeProjects, storeTodos } from "./storage.js";
-import { projectFactory } from "./project-object.js";
+import { storeTodos } from "./storage.js";
 
 
+//Render all todos for a project
 const renderToDoObjects = (project) => {
 
     let todoContainer = document.createElement("div");
     todoContainer.setAttribute("id", "todoContainer");
 
-    // Render Todos
     if (project.projectTodoList.length > 0) {
-        console.log(project)
         project.projectTodoList.forEach(i => {
             const todo = document.createElement("div");
             if (i.doneStatus == "Incomplete") {
-                todo.setAttribute("class", "todo")
+                todo.setAttribute("class", "todo");
             }
 
             else {
-                todo.setAttribute("class", "todoCompleted")
+                todo.setAttribute("class", "todoCompleted");
             }
 
             const todoInfo = document.createElement("div");
@@ -62,7 +60,7 @@ const renderToDoObjects = (project) => {
             todoRemoveBtn.setAttribute("class", "todoRemoveBtn");
             todoRemoveBtn.textContent = "Remove Todo";
             todoRemoveBtn.addEventListener("click", (e) => {
-                project.projectTodoList.splice(project.projectTodoList.indexOf(i), 1);
+                project.removeFromProjectList(i);
                 storeTodos.setTodoList(project);
                 localStorage.removeItem(project.title + " " + i.title + " todo info", todo.todoInfo);
                 if (localStorage[project.title + " project todo list"].length == 0) {

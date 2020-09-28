@@ -6,10 +6,11 @@ import { storeProjects, storeTodos } from "./storage.js";
 import { renderProjectList } from "./render-projects.js";
 
 
-const createTestProjects = (() => {
+const createDefaultProject = (() => {
 
     storeProjects.getProjectList();
     storeProjects.setProjectList();
+    createProjects();
     renderProjectList();
 
 })();

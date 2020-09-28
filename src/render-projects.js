@@ -1,9 +1,9 @@
-import { projectFactory, projectObjectList, createProjects, removeProject } from "./project-object.js";
+import { projectObjectList, createProjects, removeProject } from "./project-object.js";
 import { projectList, storeProjects, storeTodos } from "./storage.js";
-import { todoFactory, createTodos } from "./todo-object.js"
+import { createTodos } from "./todo-object.js"
 import { renderToDoObjects } from "./render-todo-objects.js"
 
-//Checks the project list logic and renders it... global scope!?
+//Render a project
 const renderProject = (project) => {
     const projectDiv = document.createElement("div");
 
@@ -28,6 +28,7 @@ const renderProject = (project) => {
             pageOverlay.remove();
         });
 
+        //Project delete confirmation prompt
         const removeProjectCheckContainer = document.createElement("div");
         removeProjectCheckContainer.setAttribute("id", "removeProjectCheckContainer");
 
@@ -74,23 +75,7 @@ const renderProject = (project) => {
     })
 }
 
-
-// //Renders the projects section
-// const renderProjects = (() => {
-
-//     const projectAndTodoContainer = document.querySelector("#projectAndTodoContainer");
-
-//     const projects = document.createElement("div");
-//     projects.setAttribute("id", "projects");
-
-//     projectAndTodoContainer.append(projects);
-
-//     const projectsListContainer = document.createElement("div");
-//     projectsListContainer.setAttribute("id", "projectsListContainer");
-
-//     projects.append(projectsListContainer);
-// })();
-
+//Renders all projects
 const renderProjectList = () => {
 
     projectObjectList.forEach(listItem => {
@@ -161,7 +146,7 @@ const renderProjectCreateBtn = (() => {
     })
 
     projectCreateBtnContainer.append(projectCreateBtn);
-    projects.append(projectCreateBtnContainer);
+    projects.insertAdjacentElement("afterbegin", projectCreateBtnContainer);
 
 })();
 
