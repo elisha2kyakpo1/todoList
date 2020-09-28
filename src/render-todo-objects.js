@@ -231,7 +231,7 @@ const renderToDoObjects = (project) => {
     todoCreateBtn.textContent = "New Todo";
 
     todoCreateBtn.addEventListener("click", (e) => {
-        todoCreateBtnContainer.remove();
+        todoCreateBtn.remove();
 
         const createTodoPopup = document.createElement("div");
         createTodoPopup.setAttribute("id", "createTodoPopup");
@@ -316,7 +316,7 @@ const renderToDoObjects = (project) => {
                 createTodos();
                 project.projectTodoListTitles.push(todoTitleInput.value)
                 renderToDoObjects(project);
-                todoContainer.insertAdjacentElement("afterbegin", todoCreateBtnContainer);
+                todoCreateBtnContainer.append(todoCreateBtn);
 
             }
         });
