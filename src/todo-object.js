@@ -25,7 +25,6 @@ function createTodos() {
                     project.projectTodoList.forEach(todo => { projectTodoTitles.push(todo.title) });
 
                     if (!projectTodoTitles.includes(title)) {
-                        console.log(project.projectTodoListTitles)
                         project.addToProjectTodoList(newTodo);
                     }
                 }

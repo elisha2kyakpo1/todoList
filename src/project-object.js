@@ -50,7 +50,6 @@ function removeProject(project) {
     }
     else if (projectObjectList.length == 1) {
         projectObjectList = [];
-        console.log(projectObjectList);
     };
 }
 

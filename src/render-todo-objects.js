@@ -187,9 +187,6 @@ const renderToDoObjects = (project) => {
             todoCompleteBtn.addEventListener("click", function (e) {
                 switch (i.doneStatus) {
                     case "Incomplete":
-
-
-                        console.log(i)
                         const completeTodo = todoFactory(i.title, i.dueDate, i.priority, i.note, "Complete");
                         todo.setAttribute("class", "todoCompleted");
                         project.projectTodoList.splice(project.projectTodoList.indexOf(i), 1, completeTodo);
@@ -198,7 +195,6 @@ const renderToDoObjects = (project) => {
 
 
                     case "Complete":
-                        console.log(i)
                         const incompleteTodo = todoFactory(i.title, i.dueDate, i.priority, i.note, "Incomplete");
                         todo.setAttribute("class", "todo");
                         project.projectTodoList.splice(project.projectTodoList.indexOf(i), 1, incompleteTodo);

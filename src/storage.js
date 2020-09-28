@@ -44,7 +44,6 @@ const storeProjects = (() => {
         getProjectList();
         if (projectList.length > 1) {
             projectList.splice(projectList.indexOf(project.title), 1);
-            console.log(projectList)
             setProjectList();
         }
         else if (projectList.length == 1) {

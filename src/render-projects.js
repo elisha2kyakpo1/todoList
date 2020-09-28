@@ -20,7 +20,6 @@ const renderProject = (project) => {
     projectRemoveBtn.setAttribute("class", "projectRemoveBtn");
     projectRemoveBtn.textContent = "X";
     projectRemoveBtn.addEventListener("click", (e) => {
-        console.log((e));
         const pageOverlay = document.createElement("div");
         pageOverlay.setAttribute("id", "pageOverlay");
 
