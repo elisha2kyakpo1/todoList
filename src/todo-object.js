@@ -1,29 +1,13 @@
 import { projectObjectList } from "./project-object.js";
 
-const todoFactory = (title, dueDate, priority, note, doneStatus = "Incomplete") => {
+const todoFactory = (title, dueDate, priority, note = "None", doneStatus = "Incomplete") => {
 
 
-    function changeDueDate(newDueDate) {
-        return this.dueDate = newDueDate;
-    }
-
-    function changePriority(newPriority) {
-        return this.priority = newPriority;
-    }
-
-    function changeNote(newNote) {
-        return this.note = newNote;
-    }
-
-    function changeDoneStatus(newDoneStatus) {
-        return this.doneStatus = newDoneStatus;
-    }
 
     let todoInfo = [title, dueDate, priority, note, doneStatus]
 
     return {
-        title, dueDate, priority, note, doneStatus, todoInfo,
-        changeDueDate, changePriority, changeNote, changeDoneStatus
+        title, dueDate, priority, note, doneStatus, todoInfo
     }
 }
 

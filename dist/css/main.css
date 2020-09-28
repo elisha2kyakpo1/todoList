@@ -4,26 +4,39 @@
     align-items: center;
     height: 100%;
     width: 100%;
+    background: #1f1f1f;
+    font-family: Helvetica;
 }
 
 #headingContainer{
     display:flex;
     place-content:center;
-    font-size: 3.5vmax;
-    margin-bottom: 4%;
+    font-size: 5rem;
+    margin-bottom: 2%;
+    color: #dedede;
 }
 
 #projectAndTodoContainer {
     display: grid;
+    grid-gap: 1%;
     width: 80%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
     justify-items: center;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 1fr 1fr;
+    background: #404040;
+    border-radius: 10px;
+    color:#dedede;
+    font-family: 'Raleway', sans-serif;
 }
 
 #projects {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    width: 100%;
+    
 }
 
 #projectCreateBtnContainer{
@@ -32,23 +45,82 @@
 }
 
 #projectCreateBtn {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    background: none;
+    color: #6ab3b3;
+    border-style: none;
 }
 
 #createProjectPopup{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    font-size: 1.5rem;
 }
 
+#projectTitleText{
+    margin-right: 1%;
+}
+
+#projectTitleInput {
+    background: #dedede;
+    border: none;
+    border-radius: 2px;
+    color:#404040;
+    margin-right: 1%;
+    font-size: 1.3rem;
+}
+
+.btn{
+    font-size: 1.5rem;
+    background: none;
+    color: #6ab3b3;
+    border-style: none;
+}
+
+.projectExistsError{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #b83c33;
+}
+
+.noNameError {
+    margin-top: 2%;
+    text-align: center;
+    font-size: 1.3rem;
+    color: #b83c33;
+}
 .project{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: solid 1px black;
-    width: 10vmax;
-    padding:20px;
+    /* border: solid 1px black; */
+    border-radius: 10px;
+    width: 100%;
+    padding-bottom:20px;
+    padding-top: 20px;
     margin-bottom: 20px;
+    text-align: center;
+    background: #444444;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+}
+
+.projectTitle{
+    font-size: 1.5rem;
+}
+
+.projectRemoveBtn{
+    border: none;
+    position: fixed;
+    font-size: 1.5rem;
+    margin-left: 1%;
+    background: none;
+    color: #b83c33;
 }
 
 #pageOverlay{
@@ -69,7 +141,7 @@
     flex-direction: column;
     position: fixed;
     justify-content: space-between;
-    background: #D3E0FF;
+    background: #b83c33;
     border-radius: 10px;
     width: 400px;
     height: 300px;
@@ -77,7 +149,7 @@
     text-align: center;
     white-space: pre-line;
     font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
-    color: #403735;
+    color: black;
     font-family: 'Raleway', sans-serif;
 }
 
@@ -85,32 +157,159 @@
     background: none;
     padding: 5%;
     border: solid 1px black;
-    font-size: calc((.1em + 1vmin) + (.1em + 1vmax));
+    font-size: 2rem;
+    color: black;
+    border-style: none;
 }
 
 #todoContainer {
-    width: 80%
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .todo{
-    display:flex;
+    display: flex;
     flex-direction: column;
-    width: 80%;
+    align-items: center;
+    font-size: 1.5rem;
+    /* border: solid 1px black; */
+    border-radius: 10px;
+    width: 100%;
+    padding-bottom:20px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background:#444444;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+}
+
+.todoCreateBtnContainer {
+    text-align: center;
+    padding-bottom: 10%;
+}
+
+.todoCreateBtn {
+    font-size: 1.5rem;
+    background: none;
+    color:#6ab3b3;
+    border-style: none;
+}
+
+#createTodoPopup{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+.todoTitleInput{
+    background: #dedede;
+    border: none;
+    border-radius: 2px;
+    color:#404040;
+    margin-bottom: 1%;
+    font-size: 1.3rem;
+}
+
+.todoDueDateInput{
+    background: #dedede;
+    border: none;
+    border-radius: 2px;
+    color:#404040;
+    margin-bottom: 1%;
+    font-size: 1.3rem;
+}
+
+.todoPriorityInput{
+    background: #dedede;
+    border: none;
+    border-radius: 2px;
+    color:#404040;
+    margin-bottom: 1%;
+    font-size: 1.3rem;
+}
+
+.todoPrioritySelection{
+    background-color: #6ab3b3;
+    
+}
+.todoNoteInput{
+    background: #dedede;
+    border: none;
+    border-radius: 2px;
+    color:#404040;
+    margin-bottom: 1%;
+    font-size: 1.3rem;
+}
+
+#editTodoPopup{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+    margin-top: 1%;
+    text-align: initial;
 }
 
 .todoRemoveBtn{
     position: fixed;
-    width: 10%;
-    align-self: flex-end;
+    margin-left: 18%;
+    font-size: 1.5rem;
+    border: none;
+    background: none;
+    color: #b83c33;
 }
+
 .todoNote{
     white-space: pre;
 }
 
 .todoCompleted{
-    display:flex;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    /* border: solid 1px black; */
+    border-radius: 10px;
+    width: 100%;
+    padding-bottom:20px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    background:#444444;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
     text-decoration-line: line-through;
-    width: 80%;
 }
 
+.popupError{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #FFA790;
+}
+
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 768px) {
+    #projectAndTodoContainer {
+        display: grid;
+        grid-gap: 1%;
+        width: 80%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        padding-left: 2%;
+        padding-right: 2%;
+        justify-items: center;
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: none;
+        background: #404040;
+        border-radius: 10px;
+        color:#dedede;
+        font-family: 'Raleway', sans-serif;
+    }
+    
+}

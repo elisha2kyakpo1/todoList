@@ -98,6 +98,7 @@ const renderProjectCreateBtn = (() => {
         projects.insertAdjacentElement("afterbegin", createProjectPopup);
 
         const projectTitleText = document.createElement("p");
+        projectTitleText.setAttribute("id", "projectTitleText")
         projectTitleText.textContent = "Title:"
         createProjectPopup.append(projectTitleText);
 
@@ -116,17 +117,18 @@ const renderProjectCreateBtn = (() => {
 
         const projectSubmitBtn = document.createElement("button");
         projectSubmitBtn.textContent = "Save";
+        projectSubmitBtn.setAttribute("class", "btn")
         projectSubmitBtn.addEventListener("click", (e) => {
             if (projectList.includes(projectTitleInput.value)) {
 
                 if (!(createProjectPopup.contains(projectExistsError))) {
-                    createProjectPopup.append(projectExistsError);
+                    createProjectPopup.insertAdjacentElement("afterend", projectExistsError);
                     return;
                 }
             }
 
             else if (projectTitleInput.value == "") {
-                createProjectPopup.append(noNameError);
+                createProjectPopup.insertAdjacentElement("afterend", noNameError);
                 return;
             }
 
@@ -136,7 +138,7 @@ const renderProjectCreateBtn = (() => {
                 createProjectPopup.remove();
                 projectTitleInput.remove();
                 projectSubmitBtn.remove();
-                projects.append(projectCreateBtn);
+                projectCreateBtnContainer.append(projectCreateBtn);
                 projectsListContainer.innerHTML = "";
                 renderProjectList();
             }
