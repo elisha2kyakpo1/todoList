@@ -1,0 +1,32 @@
+//Organisation:
+
+index.js collects all modules and puts them together
+
+//Functionality
+Individual modules for:
+
+CREATION:
+creating todo objects 
+creating project objects (seperate lists of todos)
+
+CHANGING TODO PROPERTIES; //As functions within todo-object.js (?)
+changing title
+editing description
+changing todo priority
+changing due date
+editing note
+setting todos as complete 
+
+CHANGING PROJECT PROPERTIES:
+changing project names
+
+REMOVING:
+removing todo objects //within projects list
+removing projects    //within index.js
+
+//DOM
+Rendering the page without todos/projects
+Rendering projects
+Rendering todos to projects
+Rendering changes
+Rendering removals
