@@ -1,7 +1,11 @@
-import { projectObjectList, createProjects, removeProject } from "./project-object.js";
+import {
+    projectObjectList,
+    createProjects,
+    removeProject,
+} from "./project-object.js";
 import { projectList, storeProjects, storeTodos } from "./storage.js";
-import { createTodos } from "./todo-object.js"
-import { renderToDoObjects } from "./render-todo-objects.js"
+import { createTodos } from "./todo-object.js";
+import { renderToDoObjects } from "./render-todo-objects.js";
 
 //Render a project
 const renderProject = (project) => {
@@ -29,17 +33,23 @@ const renderProject = (project) => {
 
         //Project delete confirmation prompt
         const removeProjectCheckContainer = document.createElement("div");
-        removeProjectCheckContainer.setAttribute("id", "removeProjectCheckContainer");
+        removeProjectCheckContainer.setAttribute(
+            "id",
+            "removeProjectCheckContainer"
+        );
 
         const removeProjectCheckText = document.createElement("p");
-        removeProjectCheckText.textContent = "Are you sure you want to remove this project? \n All todo items will be lost."
+        removeProjectCheckText.textContent =
+            "Are you sure you want to remove this project? \n All todo items will be lost.";
 
         const removeProjectCheckYes = document.createElement("button");
         removeProjectCheckYes.setAttribute("class", "removeCheckBtn");
         removeProjectCheckYes.textContent = "Remove";
         removeProjectCheckYes.addEventListener("click", (e) => {
-            project.projectTodoList.forEach(i => {
-                localStorage.removeItem(project.title + " " + i.title + " todo info");
+            project.projectTodoList.forEach((i) => {
+                localStorage.removeItem(
+                    project.title + " " + i.title + " todo info"
+                );
             });
             localStorage.removeItem(project.title + " project todo list");
             removeProject(project);
@@ -56,32 +66,35 @@ const renderProject = (project) => {
             pageOverlay.remove();
         });
 
-        removeProjectCheckContainer.append(removeProjectCheckText, removeProjectCheckYes, removeProjectCheckNo);
+        removeProjectCheckContainer.append(
+            removeProjectCheckText,
+            removeProjectCheckYes,
+            removeProjectCheckNo
+        );
         pageOverlay.append(removeProjectCheckContainer);
-        content.insertAdjacentElement("afterbegin", pageOverlay)
+        content.insertAdjacentElement("afterbegin", pageOverlay);
     });
 
     projectDiv.append(projectRemoveBtn);
 
     projectDiv.addEventListener("click", (e) => {
         const todoContainer = document.querySelector("#todoContainer");
+        const content = document.querySelector("#content");
         if (content.contains(todoContainer)) {
             todoContainer.remove();
         }
         storeTodos.getTodoList();
         createTodos();
         renderToDoObjects(project);
-    })
-}
-
-//Renders all projects
-const renderProjectList = () => {
-
-    projectObjectList.forEach(listItem => {
-        renderProject(listItem);
     });
 };
 
+//Renders all projects
+const renderProjectList = () => {
+    projectObjectList.forEach((listItem) => {
+        renderProject(listItem);
+    });
+};
 
 const renderProjectCreateBtn = (() => {
     const projectCreateBtnContainer = document.createElement("div");
@@ -97,17 +110,17 @@ const renderProjectCreateBtn = (() => {
         projects.insertAdjacentElement("afterbegin", createProjectPopup);
 
         const projectTitleText = document.createElement("p");
-        projectTitleText.setAttribute("id", "projectTitleText")
-        projectTitleText.textContent = "Title:"
+        projectTitleText.setAttribute("id", "projectTitleText");
+        projectTitleText.textContent = "Title:";
         createProjectPopup.append(projectTitleText);
 
         const projectTitleInput = document.createElement("input");
         projectTitleInput.setAttribute("id", "projectTitleInput");
-        projectTitleInput.setAttribute("placeholder", "New Project")
+        projectTitleInput.setAttribute("placeholder", "New Project");
         createProjectPopup.append(projectTitleInput);
 
         const projectExistsError = document.createElement("p");
-        projectExistsError.setAttribute("class", "projectExistsError")
+        projectExistsError.setAttribute("class", "projectExistsError");
         projectExistsError.textContent = "Project already exists!";
 
         const noNameError = document.createElement("p");
@@ -116,22 +129,23 @@ const renderProjectCreateBtn = (() => {
 
         const projectSubmitBtn = document.createElement("button");
         projectSubmitBtn.textContent = "Save";
-        projectSubmitBtn.setAttribute("class", "btn")
+        projectSubmitBtn.setAttribute("class", "btn");
         projectSubmitBtn.addEventListener("click", (e) => {
             if (projectList.includes(projectTitleInput.value)) {
-
-                if (!(createProjectPopup.contains(projectExistsError))) {
-                    createProjectPopup.insertAdjacentElement("afterend", projectExistsError);
+                if (!createProjectPopup.contains(projectExistsError)) {
+                    createProjectPopup.insertAdjacentElement(
+                        "afterend",
+                        projectExistsError
+                    );
                     return;
                 }
-            }
-
-            else if (projectTitleInput.value == "") {
-                createProjectPopup.insertAdjacentElement("afterend", noNameError);
+            } else if (projectTitleInput.value == "") {
+                createProjectPopup.insertAdjacentElement(
+                    "afterend",
+                    noNameError
+                );
                 return;
-            }
-
-            else if (projectTitleInput.value != "") {
+            } else if (projectTitleInput.value != "") {
                 storeProjects.addProjectToList(projectTitleInput.value);
                 createProjects();
                 createProjectPopup.remove();
@@ -141,16 +155,12 @@ const renderProjectCreateBtn = (() => {
                 projectsListContainer.innerHTML = "";
                 renderProjectList();
             }
-
         });
         createProjectPopup.append(projectSubmitBtn);
-    })
+    });
 
     projectCreateBtnContainer.append(projectCreateBtn);
     projects.insertAdjacentElement("afterbegin", projectCreateBtnContainer);
-
 })();
 
-
-
-export { renderProjectList }
+export { renderProjectList };

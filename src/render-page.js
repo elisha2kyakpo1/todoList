@@ -1,5 +1,4 @@
 const renderPage = (() => {
-
     const content = document.querySelector("#content");
 
     const headingContainer = document.createElement("div");
@@ -26,4 +25,4 @@ const renderPage = (() => {
     projects.append(projectsListContainer);
 })();
 
-export { renderPage }
+export { renderPage };

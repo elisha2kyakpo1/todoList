@@ -1,17 +1,20 @@
+body {
+    background: #1f1f1f;
+}
+
 #content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
     width: 100%;
-    background: #1f1f1f;
     font-family: Helvetica;
 }
 
-#headingContainer{
-    display:flex;
-    place-content:center;
+#headingContainer {
+    display: flex;
+    place-content: center;
     font-size: 5rem;
+    margin-top: 2%;
     margin-bottom: 2%;
     color: #dedede;
 }
@@ -24,22 +27,22 @@
     padding-bottom: 2%;
     padding-left: 2%;
     padding-right: 2%;
+    margin-bottom: 2%;
     justify-items: center;
     grid-template-columns: 1fr 1fr;
     background: #404040;
     border-radius: 10px;
-    color:#dedede;
-    font-family: 'Raleway', sans-serif;
+    color: #dedede;
+    font-family: "Raleway", sans-serif;
 }
 
 #projects {
     display: flex;
     flex-direction: column;
     width: 100%;
-    
 }
 
-#projectCreateBtnContainer{
+#projectCreateBtnContainer {
     text-align: center;
     padding-bottom: 10%;
 }
@@ -51,7 +54,7 @@
     border-style: none;
 }
 
-#createProjectPopup{
+#createProjectPopup {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -60,7 +63,7 @@
     font-size: 1.5rem;
 }
 
-#projectTitleText{
+#projectTitleText {
     margin-right: 1%;
 }
 
@@ -68,19 +71,19 @@
     background: #dedede;
     border: none;
     border-radius: 2px;
-    color:#404040;
+    color: #404040;
     margin-right: 1%;
     font-size: 1.3rem;
 }
 
-.btn{
+.btn {
     font-size: 1.5rem;
     background: none;
     color: #6ab3b3;
     border-style: none;
 }
 
-.projectExistsError{
+.projectExistsError {
     margin-top: 2%;
     text-align: center;
     font-size: 1.3rem;
@@ -93,37 +96,37 @@
     font-size: 1.3rem;
     color: #b83c33;
 }
-.project{
+.project {
     display: flex;
     flex-direction: column;
     justify-content: center;
     /* border: solid 1px black; */
     border-radius: 10px;
     width: 100%;
-    padding-bottom:20px;
+    padding-bottom: 20px;
     padding-top: 20px;
     margin-bottom: 20px;
     text-align: center;
     background: #444444;
-    -webkit-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
-    -moz-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
-    box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
 }
 
-.projectTitle{
+.projectTitle {
     font-size: 1.5rem;
 }
 
-.projectRemoveBtn{
+.projectRemoveBtn {
     border: none;
-    position: fixed;
+    position: absolute;
     font-size: 1.5rem;
     margin-left: 1%;
     background: none;
     color: #b83c33;
 }
 
-#pageOverlay{
+#pageOverlay {
     z-index: 1;
     display: flex;
     place-content: center;
@@ -133,10 +136,10 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(128,128,128,0.5);
+    background-color: rgba(128, 128, 128, 0.5);
 }
 
-#removeProjectCheckContainer{
+#removeProjectCheckContainer {
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -148,12 +151,12 @@
     padding: 10px;
     text-align: center;
     white-space: pre-line;
-    font-size: calc((.2em + 1vmin) + (.2em + 1vmax));
+    font-size: calc((0.2em + 1vmin) + (0.2em + 1vmax));
     color: black;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
 }
 
-.removeCheckBtn{
+.removeCheckBtn {
     background: none;
     padding: 5%;
     border: solid 1px black;
@@ -169,7 +172,7 @@
     align-items: center;
 }
 
-.todo{
+.todo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,14 +180,14 @@
     /* border: solid 1px black; */
     border-radius: 10px;
     width: 100%;
-    padding-bottom:20px;
-    padding-top: 20px;
-    margin-bottom: 20px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    margin-bottom: 2%;
     text-align: center;
-    background:#444444;
-    -webkit-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
-    -moz-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
-    box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    background: #444444;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
 }
 
 .todoCreateBtnContainer {
@@ -195,57 +198,56 @@
 .todoCreateBtn {
     font-size: 1.5rem;
     background: none;
-    color:#6ab3b3;
+    color: #6ab3b3;
     border-style: none;
 }
 
-#createTodoPopup{
+#createTodoPopup {
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
 }
 
-.todoTitleInput{
+.todoTitleInput {
     background: #dedede;
     border: none;
     border-radius: 2px;
-    color:#404040;
+    color: #404040;
     margin-bottom: 1%;
     font-size: 1.3rem;
 }
 
-.todoDueDateInput{
+.todoDueDateInput {
     background: #dedede;
     border: none;
     border-radius: 2px;
-    color:#404040;
+    color: #404040;
     margin-bottom: 1%;
     font-size: 1.3rem;
 }
 
-.todoPriorityInput{
+.todoPriorityInput {
     background: #dedede;
     border: none;
     border-radius: 2px;
-    color:#404040;
+    color: #404040;
     margin-bottom: 1%;
     font-size: 1.3rem;
 }
 
-.todoPrioritySelection{
+.todoPrioritySelection {
     background-color: #6ab3b3;
-    
 }
-.todoNoteInput{
+.todoNoteInput {
     background: #dedede;
     border: none;
     border-radius: 2px;
-    color:#404040;
+    color: #404040;
     margin-bottom: 1%;
     font-size: 1.3rem;
 }
 
-#editTodoPopup{
+#editTodoPopup {
     display: flex;
     flex-direction: column;
     font-size: 1.5rem;
@@ -253,8 +255,8 @@
     text-align: initial;
 }
 
-.todoRemoveBtn{
-    position: fixed;
+.todoRemoveBtn {
+    position: absolute;
     margin-left: 18%;
     font-size: 1.5rem;
     border: none;
@@ -262,11 +264,11 @@
     color: #b83c33;
 }
 
-.todoNote{
+.todoNote {
     white-space: pre;
 }
 
-.todoCompleted{
+.todoCompleted {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -274,27 +276,24 @@
     /* border: solid 1px black; */
     border-radius: 10px;
     width: 100%;
-    padding-bottom:20px;
+    padding-bottom: 20px;
     padding-top: 20px;
     margin-bottom: 20px;
     text-align: center;
-    background:#444444;
-    -webkit-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
-    -moz-box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
-    box-shadow: 3px 3px 40px -26px rgba(0,0,0,0.75);
+    background: #444444;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
     text-decoration-line: line-through;
 }
 
-.popupError{
+.popupError {
     display: flex;
     flex-direction: column;
-    border: 2px solid #FFA790;
+    border: 2px solid #ffa790;
 }
 
-
-@media only screen
-and (min-device-width : 320px)
-and (max-device-width : 768px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
     #projectAndTodoContainer {
         display: grid;
         grid-gap: 1%;
@@ -308,8 +307,7 @@ and (max-device-width : 768px) {
         grid-template-columns: none;
         background: #404040;
         border-radius: 10px;
-        color:#dedede;
-        font-family: 'Raleway', sans-serif;
+        color: #dedede;
+        font-family: "Raleway", sans-serif;
     }
-    
 }

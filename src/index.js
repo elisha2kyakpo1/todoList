@@ -5,12 +5,9 @@ import { renderToDoObjects } from "./render-todo-objects.js";
 import { storeProjects, storeTodos } from "./storage.js";
 import { renderProjectList } from "./render-projects.js";
 
-
 const createDefaultProject = (() => {
-
     storeProjects.getProjectList();
     storeProjects.setProjectList();
     createProjects();
     renderProjectList();
-
 })();

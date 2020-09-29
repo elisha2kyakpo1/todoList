@@ -1,21 +1,17 @@
-import { todoFactory, createTodos } from "./todo-object.js"
+import { todoFactory, createTodos } from "./todo-object.js";
 import { storeTodos } from "./storage.js";
-
 
 //Render all todos for a project
 const renderToDoObjects = (project) => {
-
     let todoContainer = document.createElement("div");
     todoContainer.setAttribute("id", "todoContainer");
 
     if (project.projectTodoList.length > 0) {
-        project.projectTodoList.forEach(i => {
+        project.projectTodoList.forEach((i) => {
             const todo = document.createElement("div");
             if (i.doneStatus == "Incomplete") {
                 todo.setAttribute("class", "todo");
-            }
-
-            else {
+            } else {
                 todo.setAttribute("class", "todoCompleted");
             }
 
@@ -24,7 +20,7 @@ const renderToDoObjects = (project) => {
 
             const todoTitle = document.createElement("p");
             todoTitle.setAttribute("class", "todoTitle");
-            todoTitle.append(i.title)
+            todoTitle.append(i.title);
 
             const dueDateContainer = document.createElement("div");
             dueDateContainer.setAttribute("class", "dueDateContainer");
@@ -36,7 +32,10 @@ const renderToDoObjects = (project) => {
             }
 
             const todoPriorityContainer = document.createElement("div");
-            todoPriorityContainer.setAttribute("class", "todoPriorityContainer");
+            todoPriorityContainer.setAttribute(
+                "class",
+                "todoPriorityContainer"
+            );
 
             const priorityHeading = document.createElement("p");
             priorityHeading.setAttribute("class", "priorityHeading");
@@ -48,12 +47,15 @@ const renderToDoObjects = (project) => {
                 todoNote.textContent = "Note: \n" + i.note;
             }
 
-
             dueDateContainer.append(todoDueDateHeading);
             todoPriorityContainer.append(priorityHeading);
-            todoInfo.append(todoTitle, dueDateContainer, todoPriorityContainer, todoNote);
+            todoInfo.append(
+                todoTitle,
+                dueDateContainer,
+                todoPriorityContainer,
+                todoNote
+            );
             todo.append(todoInfo);
-
 
             //Todo remove functionality
             const todoRemoveBtn = document.createElement("button");
@@ -62,13 +64,20 @@ const renderToDoObjects = (project) => {
             todoRemoveBtn.addEventListener("click", (e) => {
                 project.removeFromProjectList(i);
                 storeTodos.setTodoList(project);
-                localStorage.removeItem(project.title + " " + i.title + " todo info", todo.todoInfo);
-                if (localStorage[project.title + " project todo list"].length == 0) {
-                    localStorage.removeItem(project.title + " project todo list")
+                localStorage.removeItem(
+                    project.title + " " + i.title + " todo info",
+                    todo.todoInfo
+                );
+                if (
+                    localStorage[project.title + " project todo list"].length ==
+                    0
+                ) {
+                    localStorage.removeItem(
+                        project.title + " project todo list"
+                    );
                 }
                 todo.remove();
-            })
-
+            });
 
             todo.append(todoRemoveBtn);
 
@@ -83,10 +92,9 @@ const renderToDoObjects = (project) => {
 
                 todo.append(editTodoPopup);
 
-
                 const todoTitleText = document.createElement("p");
-                todoTitleText.setAttribute("class", "todoTitleText")
-                todoTitleText.textContent = "Title:"
+                todoTitleText.setAttribute("class", "todoTitleText");
+                todoTitleText.textContent = "Title:";
                 editTodoPopup.append(todoTitleText);
 
                 const todoTitleInput = document.createElement("input");
@@ -95,19 +103,19 @@ const renderToDoObjects = (project) => {
                 editTodoPopup.append(todoTitleInput);
 
                 const todoDueText = document.createElement("p");
-                todoDueText.setAttribute("id", "todoDueText")
-                todoDueText.textContent = "Due:"
+                todoDueText.setAttribute("id", "todoDueText");
+                todoDueText.textContent = "Due:";
                 editTodoPopup.append(todoDueText);
 
                 const todoDueDateInput = document.createElement("input");
                 todoDueDateInput.setAttribute("class", "todoDueDateInput");
                 todoDueDateInput.setAttribute("type", "date");
                 todoDueDateInput.value = i.dueDate;
-                editTodoPopup.append(todoDueDateInput)
+                editTodoPopup.append(todoDueDateInput);
 
                 const todoPriorityLabel = document.createElement("label");
                 todoPriorityLabel.setAttribute("for", "todoPriorityInput");
-                todoPriorityLabel.textContent = "Priority:"
+                todoPriorityLabel.textContent = "Priority:";
 
                 const todoPriorityInput = document.createElement("select");
                 todoPriorityInput.setAttribute("name", "todoPriorityInput");
@@ -125,13 +133,17 @@ const renderToDoObjects = (project) => {
                 todoPriorityHigh.setAttribute("value", "High");
                 todoPriorityHigh.textContent = "High";
 
-                todoPriorityInput.append(todoPriorityHigh, todoPriorityMed, todoPriorityLow);
+                todoPriorityInput.append(
+                    todoPriorityHigh,
+                    todoPriorityMed,
+                    todoPriorityLow
+                );
 
                 editTodoPopup.append(todoPriorityLabel, todoPriorityInput);
 
                 const todoNoteInputLabel = document.createElement("label");
                 todoNoteInputLabel.setAttribute("class", "todoNoteInputLabel");
-                todoNoteInputLabel.setAttribute("for", "todoNoteInput")
+                todoNoteInputLabel.setAttribute("for", "todoNoteInput");
                 todoNoteInputLabel.textContent = "Note:";
 
                 const todoNoteInput = document.createElement("input");
@@ -144,22 +156,38 @@ const renderToDoObjects = (project) => {
                 noNameError.textContent = "Enter a name!";
 
                 const todoSubmitBtn = document.createElement("button");
-                todoSubmitBtn.setAttribute("class", "btn")
+                todoSubmitBtn.setAttribute("class", "btn");
                 todoSubmitBtn.textContent = "Save";
                 todoSubmitBtn.addEventListener("click", (e) => {
                     if (todoTitleInput.value == "") {
-                        if (!(editTodoPopup.contains(noNameError))) {
+                        if (!editTodoPopup.contains(noNameError)) {
                             editTodoPopup.append(noNameError);
                             return;
                         }
-                    }
-                    else {
-                        const todoTitleInput = document.querySelector(".todoTitleInput");
+                    } else {
+                        const todoTitleInput = document.querySelector(
+                            ".todoTitleInput"
+                        );
 
-                        const editedTodo = todoFactory(todoTitleInput.value, todoDueDateInput.value, todoPriorityInput.value, todoNoteInput.value);
-                        project.projectTodoList.splice(project.projectTodoList.indexOf(i), 1, editedTodo);
-                        project.projectTodoListTitles.splice(project.projectTodoListTitles.indexOf(i), 1, editedTodo.title);
-                        localStorage.removeItem(project.title + " " + i.title + " todo info");
+                        const editedTodo = todoFactory(
+                            todoTitleInput.value,
+                            todoDueDateInput.value,
+                            todoPriorityInput.value,
+                            todoNoteInput.value
+                        );
+                        project.projectTodoList.splice(
+                            project.projectTodoList.indexOf(i),
+                            1,
+                            editedTodo
+                        );
+                        project.projectTodoListTitles.splice(
+                            project.projectTodoListTitles.indexOf(i),
+                            1,
+                            editedTodo.title
+                        );
+                        localStorage.removeItem(
+                            project.title + " " + i.title + " todo info"
+                        );
 
                         if (content.contains(todoContainer)) {
                             todoContainer.remove();
@@ -168,12 +196,13 @@ const renderToDoObjects = (project) => {
                         storeTodos.setTodoList(project);
                         createTodos();
                         renderToDoObjects(project);
-                        todoCompleteBtn.insertAdjacentElement("beforebegin", todoEditButton);
+                        todoCompleteBtn.insertAdjacentElement(
+                            "beforebegin",
+                            todoEditButton
+                        );
                     }
-
                 });
                 editTodoPopup.append(todoSubmitBtn);
-
             });
 
             todo.append(todoEditButton);
@@ -187,25 +216,54 @@ const renderToDoObjects = (project) => {
             todoCompleteBtn.addEventListener("click", function (e) {
                 switch (i.doneStatus) {
                     case "Incomplete":
-                        const completeTodo = todoFactory(i.title, i.dueDate, i.priority, i.note, "Complete");
+                        const completeTodo = todoFactory(
+                            i.title,
+                            i.dueDate,
+                            i.priority,
+                            i.note,
+                            "Complete"
+                        );
                         todo.setAttribute("class", "todoCompleted");
-                        project.projectTodoList.splice(project.projectTodoList.indexOf(i), 1, completeTodo);
-                        project.projectTodoListTitles.splice(project.projectTodoListTitles.indexOf(i), 1, completeTodo.title);
+                        project.projectTodoList.splice(
+                            project.projectTodoList.indexOf(i),
+                            1,
+                            completeTodo
+                        );
+                        project.projectTodoListTitles.splice(
+                            project.projectTodoListTitles.indexOf(i),
+                            1,
+                            completeTodo.title
+                        );
                         break;
 
-
                     case "Complete":
-                        const incompleteTodo = todoFactory(i.title, i.dueDate, i.priority, i.note, "Incomplete");
+                        const incompleteTodo = todoFactory(
+                            i.title,
+                            i.dueDate,
+                            i.priority,
+                            i.note,
+                            "Incomplete"
+                        );
                         todo.setAttribute("class", "todo");
-                        project.projectTodoList.splice(project.projectTodoList.indexOf(i), 1, incompleteTodo);
-                        project.projectTodoListTitles.splice(project.projectTodoListTitles.indexOf(i), 1, incompleteTodo.title);
+                        project.projectTodoList.splice(
+                            project.projectTodoList.indexOf(i),
+                            1,
+                            incompleteTodo
+                        );
+                        project.projectTodoListTitles.splice(
+                            project.projectTodoListTitles.indexOf(i),
+                            1,
+                            incompleteTodo.title
+                        );
                         break;
                 }
                 if (content.contains(todoContainer)) {
                     todoContainer.remove();
                 }
 
-                localStorage.removeItem(project.title + " " + i.title + " todo info");
+                localStorage.removeItem(
+                    project.title + " " + i.title + " todo info"
+                );
                 storeTodos.setTodoList(project);
                 createTodos();
                 renderToDoObjects(project);
@@ -213,8 +271,7 @@ const renderToDoObjects = (project) => {
 
             todo.append(todoCompleteBtn);
 
-
-            todoContainer.insertAdjacentElement("afterbegin", todo)
+            todoContainer.insertAdjacentElement("afterbegin", todo);
         });
     }
 
@@ -234,8 +291,8 @@ const renderToDoObjects = (project) => {
         todoContainer.insertAdjacentElement("afterbegin", createTodoPopup);
 
         const todoTitleText = document.createElement("p");
-        todoTitleText.setAttribute("id", "todoTitleText")
-        todoTitleText.textContent = "Title:"
+        todoTitleText.setAttribute("id", "todoTitleText");
+        todoTitleText.textContent = "Title:";
         createTodoPopup.append(todoTitleText);
 
         const todoTitleInput = document.createElement("input");
@@ -243,18 +300,18 @@ const renderToDoObjects = (project) => {
         createTodoPopup.append(todoTitleInput);
 
         const todoDueText = document.createElement("p");
-        todoDueText.setAttribute("id", "todoDueText")
-        todoDueText.textContent = "Due:"
+        todoDueText.setAttribute("id", "todoDueText");
+        todoDueText.textContent = "Due:";
         createTodoPopup.append(todoDueText);
 
         const todoDueDateInput = document.createElement("input");
         todoDueDateInput.setAttribute("class", "todoDueDateInput");
         todoDueDateInput.setAttribute("type", "date");
-        createTodoPopup.append(todoDueDateInput)
+        createTodoPopup.append(todoDueDateInput);
 
         const todoPriorityLabel = document.createElement("label");
         todoPriorityLabel.setAttribute("for", "todoPriorityInput");
-        todoPriorityLabel.textContent = "Priority:"
+        todoPriorityLabel.textContent = "Priority:";
 
         const todoPriorityInput = document.createElement("select");
         todoPriorityInput.setAttribute("name", "todoPriorityInput");
@@ -272,13 +329,17 @@ const renderToDoObjects = (project) => {
         todoPriorityHigh.setAttribute("value", "High");
         todoPriorityHigh.textContent = "High";
 
-        todoPriorityInput.append(todoPriorityHigh, todoPriorityMed, todoPriorityLow);
+        todoPriorityInput.append(
+            todoPriorityHigh,
+            todoPriorityMed,
+            todoPriorityLow
+        );
 
         createTodoPopup.append(todoPriorityLabel, todoPriorityInput);
 
         const todoNoteInputLabel = document.createElement("label");
         todoNoteInputLabel.setAttribute("class", "todoNoteInputLabel");
-        todoNoteInputLabel.setAttribute("for", "todoNoteInput")
+        todoNoteInputLabel.setAttribute("for", "todoNoteInput");
         todoNoteInputLabel.textContent = "Note:";
 
         const todoNoteInput = document.createElement("input");
@@ -291,18 +352,24 @@ const renderToDoObjects = (project) => {
         noNameError.textContent = "Enter a name!";
 
         const todoSubmitBtn = document.createElement("button");
-        todoSubmitBtn.setAttribute("class", "btn")
+        todoSubmitBtn.setAttribute("class", "btn");
         todoSubmitBtn.textContent = "Save";
         todoSubmitBtn.addEventListener("click", (e) => {
             if (todoTitleInput.value == "") {
-                if (!(createTodoPopup.contains(noNameError))) {
+                if (!createTodoPopup.contains(noNameError)) {
                     createTodoPopup.append(noNameError);
                     return;
                 }
-            }
-            else {
-                const todoTitleInput = document.querySelector(".todoTitleInput")
-                const newTodo = todoFactory(todoTitleInput.value, todoDueDateInput.value, todoPriorityInput.value, todoNoteInput.value);
+            } else {
+                const todoTitleInput = document.querySelector(
+                    ".todoTitleInput"
+                );
+                const newTodo = todoFactory(
+                    todoTitleInput.value,
+                    todoDueDateInput.value,
+                    todoPriorityInput.value,
+                    todoNoteInput.value
+                );
                 project.projectTodoList.push(newTodo);
                 if (content.contains(todoContainer)) {
                     todoContainer.remove();
@@ -310,10 +377,9 @@ const renderToDoObjects = (project) => {
 
                 storeTodos.setTodoList(project);
                 createTodos();
-                project.projectTodoListTitles.push(todoTitleInput.value)
+                project.projectTodoListTitles.push(todoTitleInput.value);
                 renderToDoObjects(project);
                 todoCreateBtnContainer.append(todoCreateBtn);
-
             }
         });
         createTodoPopup.append(todoSubmitBtn);
@@ -321,5 +387,5 @@ const renderToDoObjects = (project) => {
     todoCreateBtnContainer.append(todoCreateBtn);
     todoContainer.insertAdjacentElement("afterbegin", todoCreateBtnContainer);
     projectAndTodoContainer.append(todoContainer);
-}
-export { renderToDoObjects }
+};
+export { renderToDoObjects };
