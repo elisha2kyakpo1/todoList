@@ -44,7 +44,7 @@ function createProjects() {
     });
 }
 
-//Remove proejcts from the list above
+//Remove projects from the list above
 function removeProject(project) {
     if (projectObjectList.length > 1) {
         projectObjectList.splice(projectObjectList.indexOf(project), 1);
