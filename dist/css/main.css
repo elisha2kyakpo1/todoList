@@ -52,6 +52,7 @@ body {
     background: none;
     color: #6ab3b3;
     border-style: none;
+    text-shadow: 1px 1px #404040;
 }
 
 #createProjectPopup {
@@ -81,6 +82,7 @@ body {
     background: none;
     color: #6ab3b3;
     border-style: none;
+    text-shadow: 1px 1px #404040;
 }
 
 .projectExistsError {
@@ -124,6 +126,7 @@ body {
     margin-left: 1%;
     background: none;
     color: #b83c33;
+    text-shadow: 1px 1px #404040;
 }
 
 #pageOverlay {
@@ -154,15 +157,18 @@ body {
     font-size: calc((0.2em + 1vmin) + (0.2em + 1vmax));
     color: black;
     font-family: "Raleway", sans-serif;
+    text-shadow: none;
 }
 
 .removeCheckBtn {
     background: none;
     padding: 5%;
-    border: solid 1px black;
-    font-size: 2rem;
-    color: black;
+    border-radius: 10px;
     border-style: none;
+    font-size: 2rem;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
 }
 
 #todoContainer {
@@ -170,6 +176,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-shadow: 1px 1px #404040;
 }
 
 .todo {
@@ -190,6 +197,59 @@ body {
     box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
 }
 
+.todoHighPriority {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    /* border: solid 1px black; */
+    border-radius: 10px;
+    width: 100%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    background: #843535;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+}
+
+.todoMediumPriority {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    /* border: solid 1px black; */
+    border-radius: 10px;
+    width: 100%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    background: #8a7844;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+}
+
+.todoLowPriority {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    /* border: solid 1px black; */
+    border-radius: 10px;
+    width: 100%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    margin-bottom: 2%;
+    text-align: center;
+    background: #6d8a44;
+    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
+}
 .todoCreateBtnContainer {
     text-align: center;
     padding-bottom: 10%;
@@ -262,6 +322,7 @@ body {
     border: none;
     background: none;
     color: #b83c33;
+    text-shadow: 1px 1px #404040;
 }
 
 .todoNote {
@@ -276,9 +337,9 @@ body {
     /* border: solid 1px black; */
     border-radius: 10px;
     width: 100%;
-    padding-bottom: 20px;
-    padding-top: 20px;
-    margin-bottom: 20px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    margin-bottom: 2%;
     text-align: center;
     background: #444444;
     -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);

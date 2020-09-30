@@ -1,6 +1,8 @@
 import { todoFactory, createTodos } from "./todo-object.js";
 import { storeTodos } from "./storage.js";
 
+const content = document.querySelector("#content");
+
 //Render all todos for a project
 const renderToDoObjects = (project) => {
     let todoContainer = document.createElement("div");
@@ -9,10 +11,14 @@ const renderToDoObjects = (project) => {
     if (project.projectTodoList.length > 0) {
         project.projectTodoList.forEach((i) => {
             const todo = document.createElement("div");
-            if (i.doneStatus == "Incomplete") {
-                todo.setAttribute("class", "todo");
-            } else {
+            if (i.doneStatus == "Complete") {
                 todo.setAttribute("class", "todoCompleted");
+            } else if (i.doneStatus == "Incomplete" && i.priority == "High") {
+                todo.setAttribute("class", "todoHighPriority");
+            } else if (i.doneStatus == "Incomplete" && i.priority == "Medium") {
+                todo.setAttribute("class", "todoMediumPriority");
+            } else if (i.doneStatus == "Incomplete" && i.priority == "Low") {
+                todo.setAttribute("class", "todoLowPriority");
             }
 
             const todoInfo = document.createElement("div");
@@ -115,7 +121,7 @@ const renderToDoObjects = (project) => {
 
                 const todoPriorityLabel = document.createElement("label");
                 todoPriorityLabel.setAttribute("for", "todoPriorityInput");
-                todoPriorityLabel.textContent = "Priority:";
+                todoPriorityLabel.textContent = "Priority: ";
 
                 const todoPriorityInput = document.createElement("select");
                 todoPriorityInput.setAttribute("name", "todoPriorityInput");

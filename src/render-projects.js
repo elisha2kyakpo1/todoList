@@ -7,6 +7,8 @@ import { projectList, storeProjects, storeTodos } from "./storage.js";
 import { createTodos } from "./todo-object.js";
 import { renderToDoObjects } from "./render-todo-objects.js";
 
+const content = document.querySelector("#content");
+
 //Render a project
 const renderProject = (project) => {
     const projectDiv = document.createElement("div");
@@ -79,7 +81,6 @@ const renderProject = (project) => {
 
     projectDiv.addEventListener("click", (e) => {
         const todoContainer = document.querySelector("#todoContainer");
-        const content = document.querySelector("#content");
         if (content.contains(todoContainer)) {
             todoContainer.remove();
         }
