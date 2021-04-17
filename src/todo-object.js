@@ -19,7 +19,7 @@ const todoFactory = (
     };
 };
 
-function createTodos() {
+const createTodos = () => {
     projectObjectList.forEach((project) => {
         if (project.projectTodoListTitles.length > 0) {
             project.projectTodoListTitles.forEach((title) => {

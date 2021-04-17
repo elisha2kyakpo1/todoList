@@ -5,11 +5,11 @@ const projectFactory = (title) => {
 
     const projectTodoListTitles = [];
 
-    function addToProjectTodoList(todoObject) {
+    const addToProjectTodoList = (todoObject) => {
         projectTodoList.push(todoObject);
     }
 
-    function removeFromProjectList(todoObject) {
+    const removeFromProjectList = (todoObject) => {
         projectTodoList.splice(projectTodoList.indexOf(todoObject), 1);
     }
 
@@ -29,8 +29,8 @@ const projectFactory = (title) => {
 //Project objects stored in a list
 let projectObjectList = [];
 
-//Create the project objects and push them to the above list
-function createProjects() {
+//Create the project
+const createProjects = () => {
     storeProjects.getProjectList();
     const projectObjectListTitles = [];
     projectObjectList.forEach((projectObject) => {
@@ -44,8 +44,8 @@ function createProjects() {
     });
 }
 
-//Remove projects from the list above
-function removeProject(project) {
+// Remove projects 
+const removeProject = (project) => {
     if (projectObjectList.length > 1) {
         projectObjectList.splice(projectObjectList.indexOf(project), 1);
     } else if (projectObjectList.length == 1) {

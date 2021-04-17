@@ -219,7 +219,7 @@ const renderToDoObjects = (project) => {
             todoCompleteBtn.setAttribute("class", "btn");
             todoCompleteBtn.textContent = "Complete";
 
-            todoCompleteBtn.addEventListener("click", function (e) {
+            todoCompleteBtn.addEventListener("click", (e) => {
                 switch (i.doneStatus) {
                     case "Incomplete":
                         const completeTodo = todoFactory(

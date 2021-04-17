@@ -9,7 +9,7 @@ if (localStorage.length == 0) {
 }
 
 const storeProjects = (() => {
-    function setProjectList() {
+    const setProjectList = () => {
         projectList.forEach((project) => {
             if (project != "") {
                 localStorage.setItem("projectList", projectList);
@@ -17,7 +17,7 @@ const storeProjects = (() => {
         });
     }
 
-    function getProjectList() {
+    const getProjectList = () => {
         if (localStorage.length == 0) {
             setProjectList();
         } else {
@@ -58,7 +58,7 @@ const storeProjects = (() => {
 })();
 
 const storeTodos = (() => {
-    function setTodoList(project) {
+    const setTodoList = (project) => {
         const storedProjectTodoList = [];
 
         project.projectTodoList.forEach((todo) => {
@@ -74,7 +74,7 @@ const storeTodos = (() => {
         );
     }
 
-    function getTodoList() {
+    const getTodoList = () => {
         projectObjectList.forEach((project) => {
             if (
                 localStorage.getItem(project.title + " project todo list") !=
