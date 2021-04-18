@@ -25,11 +25,11 @@ const renderProject = (project) => {
   const projectRemoveBtn = document.createElement('button');
   projectRemoveBtn.setAttribute('class', 'projectRemoveBtn');
   projectRemoveBtn.textContent = 'X';
-  projectRemoveBtn.addEventListener('click', (e) => {
+  projectRemoveBtn.addEventListener('click', () => {
     const pageOverlay = document.createElement('div');
     pageOverlay.setAttribute('id', 'pageOverlay');
 
-    pageOverlay.addEventListener('click', (e) => {
+    pageOverlay.addEventListener('click', () => {
       pageOverlay.remove();
     });
 
@@ -71,7 +71,7 @@ const renderProject = (project) => {
     removeProjectCheckContainer.append(
       removeProjectCheckText,
       removeProjectCheckYes,
-      removeProjectCheckNo
+      removeProjectCheckNo,
     );
     pageOverlay.append(removeProjectCheckContainer);
     content.insertAdjacentElement('afterbegin', pageOverlay);
@@ -79,8 +79,7 @@ const renderProject = (project) => {
 
   projectDiv.append(projectRemoveBtn);
 
-  projectDiv.addEventListener('click', (e) => {
-    e.preventDefault();
+  projectDiv.addEventListener('click', () => {
     const todoContainer = document.querySelector('#todoContainer');
     if (content.contains(todoContainer)) {
       todoContainer.remove();
@@ -105,7 +104,7 @@ const renderProjectCreateBtn = (() => {
   const projectCreateBtn = document.createElement('button');
   projectCreateBtn.setAttribute('id', 'projectCreateBtn');
   projectCreateBtn.textContent = 'Create Project';
-  projectCreateBtn.addEventListener('click', (e) => {
+  projectCreateBtn.addEventListener('click', () => {
     projectCreateBtn.remove();
     const createProjectPopup = document.createElement('div');
     createProjectPopup.setAttribute('id', 'createProjectPopup');
