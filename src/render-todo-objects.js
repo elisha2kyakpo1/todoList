@@ -1,11 +1,13 @@
-import { todoFactory, createTodos } from './todo-object.js';
-import { storeTodos } from './storage.js';
+import { todoFactory, createTodos } from './todo-object';
+import { storeTodos } from './storage';
+import { projectAndTodoContainer } from './render-page';
 
 const content = document.querySelector('#content');
+const todoCompleteBtn = document.createElement('button');
+const todoContainer = document.createElement('div');
 
 // Render all todos for a project
 const renderToDoObjects = (project) => {
-  const todoContainer = document.createElement('div');
   todoContainer.setAttribute('id', 'todoContainer');
 
   if (project.projectTodoList.length > 0) {
@@ -13,11 +15,11 @@ const renderToDoObjects = (project) => {
       const todo = document.createElement('div');
       if (i.doneStatus === 'Complete') {
         todo.setAttribute('class', 'todoCompleted');
-      } else if (i.doneStatus == 'Incomplete' && i.priority == 'High') {
+      } else if (i.doneStatus === 'Incomplete' && i.priority === 'High') {
         todo.setAttribute('class', 'todoHighPriority');
-      } else if (i.doneStatus == 'Incomplete' && i.priority == 'Medium') {
+      } else if (i.doneStatus === 'Incomplete' && i.priority === 'Medium') {
         todo.setAttribute('class', 'todoMediumPriority');
-      } else if (i.doneStatus == 'Incomplete' && i.priority == 'Low') {
+      } else if (i.doneStatus === 'Incomplete' && i.priority === 'Low') {
         todo.setAttribute('class', 'todoLowPriority');
       }
 
@@ -34,7 +36,7 @@ const renderToDoObjects = (project) => {
       const todoDueDateHeading = document.createElement('p');
       todoDueDateHeading.setAttribute('class', 'todoDueDateHeading');
       if (i.dueDate !== undefined && i.dueDate !== '') {
-        todoDueDateHeading.textContent = 'Due Date: ' + i.dueDate;
+        todoDueDateHeading.textContent = `Due Date: ${i.dueDate}`;
       }
 
       const todoPriorityContainer = document.createElement('div');
@@ -45,12 +47,12 @@ const renderToDoObjects = (project) => {
 
       const priorityHeading = document.createElement('p');
       priorityHeading.setAttribute('class', 'priorityHeading');
-      priorityHeading.textContent = 'Priority: ' + i.priority;
+      priorityHeading.textContent = `Priority: ${i.priority}`;
 
       const todoNote = document.createElement('p');
       todoNote.setAttribute('class', 'todoNote');
       if (i.note !== undefined && todo.note !== '') {
-        todoNote.textContent = 'Note: \n' + i.note;
+        todoNote.textContent = `Note: \n ${i.note}`;
       }
 
       dueDateContainer.append(todoDueDateHeading);
@@ -67,18 +69,18 @@ const renderToDoObjects = (project) => {
       const todoRemoveBtn = document.createElement('button');
       todoRemoveBtn.setAttribute('class', 'todoRemoveBtn');
       todoRemoveBtn.textContent = 'X';
-      todoRemoveBtn.addEventListener('click', (e) => {
+      todoRemoveBtn.addEventListener('click', () => {
         project.removeFromProjectList(i);
         storeTodos.setTodoList(project);
         localStorage.removeItem(
-          project.title + ' ' + i.title + ' todo info',
+          `${project.title} ${i.title} todo info`,
           todo.todoInfo,
         );
         if (
-          localStorage[project.title + ' project todo list'].length === 0
+          localStorage[`${project.title} project todo list`].length === 0
         ) {
           localStorage.removeItem(
-            project.title + ' project todo list'
+            `${project.title} project todo list`,
           );
         }
         todo.remove();
@@ -90,7 +92,7 @@ const renderToDoObjects = (project) => {
       todoEditButton.setAttribute('class', 'btn');
       todoEditButton.textContent = 'Edit';
 
-      todoEditButton.addEventListener('click', (e) => {
+      todoEditButton.addEventListener('click', () => {
         todoEditButton.remove();
         const editTodoPopup = document.createElement('div');
         editTodoPopup.setAttribute('id', 'editTodoPopup');
@@ -163,7 +165,7 @@ const renderToDoObjects = (project) => {
         const todoSubmitBtn = document.createElement('button');
         todoSubmitBtn.setAttribute('class', 'btn');
         todoSubmitBtn.textContent = 'Save';
-        todoSubmitBtn.addEventListener('click', (e) => {
+        todoSubmitBtn.addEventListener('click', () => {
           if (todoTitleInput.value === '') {
             if (!editTodoPopup.contains(noNameError)) {
               editTodoPopup.append(noNameError);
@@ -190,7 +192,7 @@ const renderToDoObjects = (project) => {
               editedTodo.title,
             );
             localStorage.removeItem(
-              project.title + ' ' + i.title + ' todo info'
+              `${project.title} ${i.title} todo info`,
             );
 
             if (content.contains(todoContainer)) {
@@ -213,11 +215,10 @@ const renderToDoObjects = (project) => {
 
       // Todo complete button
 
-      const todoCompleteBtn = document.createElement('button');
       todoCompleteBtn.setAttribute('class', 'btn');
       todoCompleteBtn.textContent = 'Complete';
 
-      todoCompleteBtn.addEventListener('click', (e) => {
+      todoCompleteBtn.addEventListener('click', () => {
         switch (i.doneStatus) {
           case 'Incomplete': {
             const completeTodo = todoFactory(
@@ -269,7 +270,7 @@ const renderToDoObjects = (project) => {
         }
 
         localStorage.removeItem(
-          project.title + ' ' + i.title + ' todo info'
+          `${project.title} ${i.title} todo info`,
         );
         storeTodos.setTodoList(project);
         createTodos();
@@ -290,7 +291,7 @@ const renderToDoObjects = (project) => {
   todoCreateBtn.setAttribute('class', 'todoCreateBtn');
   todoCreateBtn.textContent = 'New Todo';
 
-  todoCreateBtn.addEventListener('click', (e) => {
+  todoCreateBtn.addEventListener('click', () => {
     todoCreateBtn.remove();
 
     const createTodoPopup = document.createElement('div');
@@ -361,8 +362,8 @@ const renderToDoObjects = (project) => {
     const todoSubmitBtn = document.createElement('button');
     todoSubmitBtn.setAttribute('class', 'btn');
     todoSubmitBtn.textContent = 'Save';
-    todoSubmitBtn.addEventListener('click', (e) => {
-      if (todoTitleInput.value == '') {
+    todoSubmitBtn.addEventListener('click', () => {
+      if (todoTitleInput.value === '') {
         if (!createTodoPopup.contains(noNameError)) {
           createTodoPopup.append(noNameError);
         }
@@ -394,4 +395,4 @@ const renderToDoObjects = (project) => {
   todoContainer.insertAdjacentElement('afterbegin', todoCreateBtnContainer);
   projectAndTodoContainer.append(todoContainer);
 };
-export { renderToDoObjects };
+export { renderToDoObjects, todoContainer };

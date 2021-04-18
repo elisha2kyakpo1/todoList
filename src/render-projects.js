@@ -2,12 +2,16 @@ import {
   projectObjectList,
   createProjects,
   removeProject,
-} from './project-object';
-import { projectList, storeProjects, storeTodos } from './storage';
+  projectList,
+  storeProjects,
+  storeTodos,
+} from './storage';
 import { createTodos } from './todo-object';
 import { renderToDoObjects } from './render-todo-objects';
+import { projectsListContainer, projects } from './render-page';
 
 const content = document.querySelector('#content');
+const todoContainer = document.querySelector('#todoContainer');
 
 // Render a project
 const renderProject = (project) => {
@@ -25,11 +29,11 @@ const renderProject = (project) => {
   const projectRemoveBtn = document.createElement('button');
   projectRemoveBtn.setAttribute('class', 'projectRemoveBtn');
   projectRemoveBtn.textContent = 'X';
-  projectRemoveBtn.addEventListener('click', (e) => {
+  projectRemoveBtn.addEventListener('click', () => {
     const pageOverlay = document.createElement('div');
     pageOverlay.setAttribute('id', 'pageOverlay');
 
-    pageOverlay.addEventListener('click', (e) => {
+    pageOverlay.addEventListener('click', () => {
       pageOverlay.remove();
     });
 
@@ -46,13 +50,13 @@ const renderProject = (project) => {
     const removeProjectCheckYes = document.createElement('button');
     removeProjectCheckYes.setAttribute('class', 'removeCheckBtn');
     removeProjectCheckYes.textContent = 'Remove';
-    removeProjectCheckYes.addEventListener('click', (e) => {
+    removeProjectCheckYes.addEventListener('click', () => {
       project.projectTodoList.forEach((i) => {
         localStorage.removeItem(
-          project.title + ' ' + i.title + ' todo info'
+          `${project.title} ${i.title} todo info`,
         );
       });
-      localStorage.removeItem(project.title + ' project todo list');
+      localStorage.removeItem(`${project.title} project todo list`);
       removeProject(project);
       storeProjects.removeProjectFromList(project);
       pageOverlay.remove();
@@ -63,7 +67,7 @@ const renderProject = (project) => {
     const removeProjectCheckNo = document.createElement('button');
     removeProjectCheckNo.setAttribute('class', 'removeCheckBtn');
     removeProjectCheckNo.textContent = 'Cancel';
-    removeProjectCheckNo.addEventListener('click', (e) => {
+    removeProjectCheckNo.addEventListener('click', () => {
       pageOverlay.remove();
     });
 
@@ -78,8 +82,7 @@ const renderProject = (project) => {
 
   projectDiv.append(projectRemoveBtn);
 
-  projectDiv.addEventListener('click', (e) => {
-    const todoContainer = document.querySelector('#todoContainer');
+  projectDiv.addEventListener('click', () => {
     if (content.contains(todoContainer)) {
       todoContainer.remove();
     }
@@ -103,7 +106,7 @@ const renderProjectCreateBtn = (() => {
   const projectCreateBtn = document.createElement('button');
   projectCreateBtn.setAttribute('id', 'projectCreateBtn');
   projectCreateBtn.textContent = 'Create Project';
-  projectCreateBtn.addEventListener('click', (e) => {
+  projectCreateBtn.addEventListener('click', () => {
     projectCreateBtn.remove();
     const createProjectPopup = document.createElement('div');
     createProjectPopup.setAttribute('id', 'createProjectPopup');
@@ -130,21 +133,19 @@ const renderProjectCreateBtn = (() => {
     const projectSubmitBtn = document.createElement('button');
     projectSubmitBtn.textContent = 'Save';
     projectSubmitBtn.setAttribute('class', 'btn');
-    projectSubmitBtn.addEventListener('click', (e) => {
+    projectSubmitBtn.addEventListener('click', () => {
       if (projectList.includes(projectTitleInput.value)) {
         if (!createProjectPopup.contains(projectExistsError)) {
           createProjectPopup.insertAdjacentElement(
             'afterend',
             projectExistsError,
           );
-          return;
         }
       } else if (projectTitleInput.value === '') {
         createProjectPopup.insertAdjacentElement(
           'afterend',
           noNameError,
         );
-        return;
       } else if (projectTitleInput.value !== '') {
         storeProjects.addProjectToList(projectTitleInput.value);
         createProjects();
@@ -163,4 +164,4 @@ const renderProjectCreateBtn = (() => {
   projects.insertAdjacentElement('afterbegin', projectCreateBtnContainer);
 })();
 
-export { renderProjectList };
+export { renderProjectList, renderProjectCreateBtn };
