@@ -2,8 +2,8 @@
 
 ## About the app
 
-This is a Microverse project, where we are asked to create a todo list, this is all to put into practice the ES6 and functional programming.
-In this project your can create a project, in a project you can create a todo, you can select priority as high, medium , or low.
+This is a Microverse project, and this time I was required to create a todo list to put into practice the ES6 and functional programming.
+In this project users can create a project, inside a project, you can create a todo, you can select priority as high, medium , or low.
 
 ## Getting Started
 
