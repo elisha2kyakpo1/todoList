@@ -5,6 +5,10 @@
 This is a Microverse project, and this time I was required to create a todo list to put into practice the ES6 and functional programming.
 In this project users can create a project, inside a project, you can create a todo, you can select priority as high, medium , or low.
 
+![Project titles!](dist/img/projects.png)
+
+![Project and todos!](dist/img/todo_and_project.png)
+
 ## Getting Started
 
 ## Setup
@@ -18,6 +22,8 @@ To get started, you should first get this file in your local machine by cloning 
 > npm install webpack webpack-cli --save-dev
 
 > npn install
+
+Just run the command below for webpack to compile the code.
 
 > npx webpack --watch
 

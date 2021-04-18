@@ -3,13 +3,12 @@ import { storeTodos } from './storage';
 import { projectAndTodoContainer } from './render-page';
 
 const content = document.querySelector('#content');
-const todoCompleteBtn = document.createElement('button');
-const todoContainer = document.createElement('div');
 
 // Render all todos for a project
 const renderToDoObjects = (project) => {
+  const todoContainer = document.createElement('div');
   todoContainer.setAttribute('id', 'todoContainer');
-
+  const todoCompleteBtn = document.createElement('button');
   if (project.projectTodoList.length > 0) {
     project.projectTodoList.forEach((i) => {
       const todo = document.createElement('div');
@@ -52,7 +51,7 @@ const renderToDoObjects = (project) => {
       const todoNote = document.createElement('p');
       todoNote.setAttribute('class', 'todoNote');
       if (i.note !== undefined && todo.note !== '') {
-        todoNote.textContent = `Note: \n ${i.note}`;
+        todoNote.textContent = `Note: \n + ${i.note}`;
       }
 
       dueDateContainer.append(todoDueDateHeading);
@@ -69,7 +68,8 @@ const renderToDoObjects = (project) => {
       const todoRemoveBtn = document.createElement('button');
       todoRemoveBtn.setAttribute('class', 'todoRemoveBtn');
       todoRemoveBtn.textContent = 'X';
-      todoRemoveBtn.addEventListener('click', () => {
+      todoRemoveBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         project.removeFromProjectList(i);
         storeTodos.setTodoList(project);
         localStorage.removeItem(
@@ -92,7 +92,8 @@ const renderToDoObjects = (project) => {
       todoEditButton.setAttribute('class', 'btn');
       todoEditButton.textContent = 'Edit';
 
-      todoEditButton.addEventListener('click', () => {
+      todoEditButton.addEventListener('click', (e) => {
+        e.preventDefault();
         todoEditButton.remove();
         const editTodoPopup = document.createElement('div');
         editTodoPopup.setAttribute('id', 'editTodoPopup');
@@ -165,7 +166,8 @@ const renderToDoObjects = (project) => {
         const todoSubmitBtn = document.createElement('button');
         todoSubmitBtn.setAttribute('class', 'btn');
         todoSubmitBtn.textContent = 'Save';
-        todoSubmitBtn.addEventListener('click', () => {
+        todoSubmitBtn.addEventListener('click', (e) => {
+          e.preventDefault();
           if (todoTitleInput.value === '') {
             if (!editTodoPopup.contains(noNameError)) {
               editTodoPopup.append(noNameError);
@@ -218,7 +220,8 @@ const renderToDoObjects = (project) => {
       todoCompleteBtn.setAttribute('class', 'btn');
       todoCompleteBtn.textContent = 'Complete';
 
-      todoCompleteBtn.addEventListener('click', () => {
+      todoCompleteBtn.addEventListener('click', (e) => {
+        e.preventDefault();
         switch (i.doneStatus) {
           case 'Incomplete': {
             const completeTodo = todoFactory(
@@ -291,7 +294,8 @@ const renderToDoObjects = (project) => {
   todoCreateBtn.setAttribute('class', 'todoCreateBtn');
   todoCreateBtn.textContent = 'New Todo';
 
-  todoCreateBtn.addEventListener('click', () => {
+  todoCreateBtn.addEventListener('click', (e) => {
+    e.preventDefault();
     todoCreateBtn.remove();
 
     const createTodoPopup = document.createElement('div');
@@ -362,7 +366,8 @@ const renderToDoObjects = (project) => {
     const todoSubmitBtn = document.createElement('button');
     todoSubmitBtn.setAttribute('class', 'btn');
     todoSubmitBtn.textContent = 'Save';
-    todoSubmitBtn.addEventListener('click', () => {
+    todoSubmitBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       if (todoTitleInput.value === '') {
         if (!createTodoPopup.contains(noNameError)) {
           createTodoPopup.append(noNameError);
@@ -395,4 +400,4 @@ const renderToDoObjects = (project) => {
   todoContainer.insertAdjacentElement('afterbegin', todoCreateBtnContainer);
   projectAndTodoContainer.append(todoContainer);
 };
-export { renderToDoObjects, todoContainer };
+export { renderToDoObjects, content };

@@ -52,6 +52,8 @@ body {
   border-style: none;
   text-shadow: 1px 1px #404040;
   cursor: pointer;
+  border: 1px solid #6ab3b3;
+  border-radius: 3px;
 }
 
 #createProjectPopup {
@@ -253,6 +255,8 @@ body {
   background: none;
   color: #6ab3b3;
   border-style: none;
+  border: 1px solid #6ab3b3;
+  border-radius: 3px;
 }
 
 #createTodoPopup {
