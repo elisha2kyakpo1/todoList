@@ -1,17 +1,16 @@
-import { storeProjects, projectList } from "./storage.js";
+import { storeProjects, projectList } from './storage';
 
 const projectFactory = (title) => {
-    const projectTodoList = [];
+  const projectTodoList = [];
 
-    const projectTodoListTitles = [];
+  const projectTodoListTitles = [];
 
-    const addToProjectTodoList = (todoObject) => {
-        projectTodoList.push(todoObject);
-    }
+  const addToProjectTodoList = (todoObject) => {
+    projectTodoList.push(todoObject);
+  };
 
-    const removeFromProjectList = (todoObject) => {
-        projectTodoList.splice(projectTodoList.indexOf(todoObject), 1);
-    }
+  const removeFromProjectList = (todoObject) => {
+    projectTodoList.splice(projectTodoList.indexOf(todoObject), 1);
   };
 
   return {
