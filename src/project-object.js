@@ -1,4 +1,4 @@
-import { storeProjects, projectList } from './storage';
+import { storeProjects} from './storage';
 
 const projectFactory = (title) => {
   const projectTodoList = [];

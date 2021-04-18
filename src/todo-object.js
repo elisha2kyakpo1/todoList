@@ -24,13 +24,14 @@ const createTodos = () => {
     if (project.projectTodoListTitles.length > 0) {
       project.projectTodoListTitles.forEach((title) => {
         const localTodos = localStorage.getItem(
-          project.title`  ${title}  todo info`,
+          `project.title  ${title} todo info`,
         );
 
         if (localTodos !== '' && localTodos !== undefined) {
-          const todoInfo = localStorage[project.title` ${title} todo info`
+          const todoInfo = localStorage[
+            project.title + ' ' + title + ' todo info'
           ].split(',');
-          const newTodo = todoFactory(
+          let newTodo = todoFactory(
             todoInfo[0],
             todoInfo[1],
             todoInfo[2],

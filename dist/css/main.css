@@ -108,13 +108,11 @@ body {
     margin-bottom: 20px;
     text-align: center;
     background: #444444;
-    -webkit-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
-    box-shadow: 3px 3px 40px -26px rgba(0, 0, 0, 0.75);
 }
 
 .projectTitle {
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .projectRemoveBtn {
