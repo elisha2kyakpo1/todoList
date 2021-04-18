@@ -37,7 +37,7 @@ const renderProject = (project) => {
     const removeProjectCheckContainer = document.createElement('div');
     removeProjectCheckContainer.setAttribute(
       'id',
-      'removeProjectCheckContainer'
+      'removeProjectCheckContainer',
     );
 
     const removeProjectCheckText = document.createElement('p');
@@ -46,7 +46,7 @@ const renderProject = (project) => {
     const removeProjectCheckYes = document.createElement('button');
     removeProjectCheckYes.setAttribute('class', 'removeCheckBtn');
     removeProjectCheckYes.textContent = 'Remove';
-    removeProjectCheckYes.addEventListener('click', (e) => {
+    removeProjectCheckYes.addEventListener('click', () => {
       project.projectTodoList.forEach((i) => {
         localStorage.removeItem(
           project.title`  ${i.title} todo info`,
@@ -64,7 +64,7 @@ const renderProject = (project) => {
     const removeProjectCheckNo = document.createElement('button');
     removeProjectCheckNo.setAttribute('class', 'removeCheckBtn');
     removeProjectCheckNo.textContent = 'Cancel';
-    removeProjectCheckNo.addEventListener('click', (e) => {
+    removeProjectCheckNo.addEventListener('click', () => {
       pageOverlay.remove();
     });
 
