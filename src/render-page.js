@@ -4,7 +4,7 @@ const renderPage = (() => {
   const headingContainer = document.createElement('div');
   headingContainer.setAttribute('id', 'headingContainer');
 
-  const heading = document.createElement('h1');
+  const heading = document.createElement('h2');
   heading.textContent = 'Todo List';
 
   headingContainer.append(heading);
