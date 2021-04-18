@@ -1,28 +1,28 @@
 const renderPage = (() => {
-    const content = document.querySelector('#content');
+  const content = document.querySelector('#content');
 
-    const headingContainer = document.createElement('div');
-    headingContainer.setAttribute('id', 'headingContainer');
+  const headingContainer = document.createElement('div');
+  headingContainer.setAttribute('id', 'headingContainer');
 
-    const heading = document.createElement('h1');
-    heading.textContent = 'Todo List';
+  const heading = document.createElement('h1');
+  heading.textContent = 'Todo List';
 
-    headingContainer.append(heading);
-    content.append(headingContainer);
+  headingContainer.append(heading);
+  content.append(headingContainer);
 
-    const projectAndTodoContainer = document.createElement('div');
-    projectAndTodoContainer.setAttribute('id', 'projectAndTodoContainer');
-    content.append(projectAndTodoContainer);
+  const projectAndTodoContainer = document.createElement('div');
+  projectAndTodoContainer.setAttribute('id', 'projectAndTodoContainer');
+  content.append(projectAndTodoContainer);
 
-    const projects = document.createElement('div');
-    projects.setAttribute('id', 'projects');
+  const projects = document.createElement('div');
+  projects.setAttribute('id', 'projects');
 
-    projectAndTodoContainer.append(projects);
+  projectAndTodoContainer.append(projects);
 
-    const projectsListContainer = document.createElement('div');
-    projectsListContainer.setAttribute('id', 'projectsListContainer');
+  const projectsListContainer = document.createElement('div');
+  projectsListContainer.setAttribute('id', 'projectsListContainer');
 
-    projects.append(projectsListContainer);
+  projects.append(projectsListContainer);
 })();
 
-export { renderPage };
+export default { renderPage };

@@ -1,4 +1,4 @@
-import { renderPage } from './render-page';
+import renderPage from './render-page';
 import { todoFactory } from './todo-object';
 import { projectFactory, createProjects } from './project-object';
 import { renderToDoObjects } from './render-todo-objects';
