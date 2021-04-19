@@ -1,6 +1,6 @@
 import { renderPage } from './render-page';
 import { todoFactory } from './todo-object';
-// import { renderToDoObjects } from './render-todo-objects';
+import { renderToDoObjects } from './render-todo-objects';
 import {
   storeProjects,
   storeTodos,
@@ -13,7 +13,7 @@ storeProjects.getProjectList();
 storeProjects.setProjectList();
 createProjects();
 renderProjectList();
-// renderToDoObjects();
+renderToDoObjects();
 storeTodos();
 renderPage();
 todoFactory();
