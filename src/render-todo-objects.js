@@ -4,7 +4,6 @@ import { projectAndTodoContainer } from './render-page';
 
 const content = document.querySelector('#content');
 
-// Render all todos for a project
 const renderToDoObjects = (project) => {
   const todoContainer = document.createElement('div');
   todoContainer.setAttribute('id', 'todoContainer');
@@ -64,7 +63,6 @@ const renderToDoObjects = (project) => {
       );
       todo.append(todoInfo);
 
-      // Todo remove functionality
       const todoRemoveBtn = document.createElement('button');
       todoRemoveBtn.setAttribute('class', 'todoRemoveBtn');
       todoRemoveBtn.textContent = 'X';
@@ -215,8 +213,6 @@ const renderToDoObjects = (project) => {
 
       todo.append(todoEditButton);
 
-      // Todo complete button
-
       todoCompleteBtn.setAttribute('class', 'btn');
       todoCompleteBtn.textContent = 'Complete';
 
@@ -286,7 +282,6 @@ const renderToDoObjects = (project) => {
     });
   }
 
-  // Todo create functionality
   const todoCreateBtnContainer = document.createElement('div');
   todoCreateBtnContainer.setAttribute('class', 'todoCreateBtnContainer');
 

@@ -1,8 +1,6 @@
-// Keep a list of projects, added to localStorage
 const projectList = [];
 const projectObjectList = [];
 
-// Create the default project if no others are present
 if (localStorage.length === 0) {
   projectList.push('Default Project');
 }
@@ -29,7 +27,6 @@ const storeProjects = (() => {
     }
   };
 
-  // Add and remove projects to the project list so they can be saved in localStorage
   const addProjectToList = (project) => {
     getProjectList();
     projectList.push(project);
@@ -116,7 +113,6 @@ const projectFactory = (title) => {
   };
 };
 
-// Create the project
 const createProjects = () => {
   storeProjects.getProjectList();
   const projectObjectListTitles = [];
@@ -132,7 +128,6 @@ const createProjects = () => {
   });
 };
 
-// Remove projects
 const removeProject = (project) => {
   if (projectObjectList.length > 1) {
     projectObjectList.splice(projectObjectList.indexOf(project), 1);

@@ -13,7 +13,6 @@ import { projectsListContainer, projects } from './render-page';
 const content = document.querySelector('#content');
 const todoContainer = document.querySelector('#todoContainer');
 
-// Render a project
 const renderProject = (project) => {
   const projectDiv = document.createElement('div');
 
@@ -37,7 +36,6 @@ const renderProject = (project) => {
       pageOverlay.remove();
     });
 
-    // Project delete confirmation prompt
     const removeProjectCheckContainer = document.createElement('div');
     removeProjectCheckContainer.setAttribute(
       'id',
@@ -92,7 +90,6 @@ const renderProject = (project) => {
   });
 };
 
-// Renders all projects
 const renderProjectList = () => {
   projectObjectList.forEach((listItem) => {
     renderProject(listItem);
