@@ -1,5 +1,5 @@
 import { todoFactory, createTodos } from './todo-object';
-import { storeTodos } from './storage';
+import { storeTodos, projectFactory } from './storage';
 import { projectAndTodoContainer } from './render-page';
 
 const content = document.querySelector('#content');
@@ -8,8 +8,8 @@ const renderToDoObjects = (project) => {
   const todoContainer = document.createElement('div');
   todoContainer.setAttribute('id', 'todoContainer');
   const todoCompleteBtn = document.createElement('button');
-  if (project.projectTodoList.length > 0) {
-    project.projectTodoList.forEach((i) => {
+  if (projectFactory.projectTodoList > 0) {
+    projectFactory.projectTodoList.forEach((i) => {
       const todo = document.createElement('div');
       if (i.doneStatus === 'Complete') {
         todo.setAttribute('class', 'todoCompleted');
