@@ -308,7 +308,7 @@ const renderToDoObjects = (project) => {
 
     const todoDueText = document.createElement('p');
     todoDueText.setAttribute('id', 'todoDueText');
-    todoDueText.textContent = 'Due:';
+    todoDueText.textContent = 'Due Date:';
     createTodoPopup.append(todoDueText);
 
     const todoDueDateInput = document.createElement('input');

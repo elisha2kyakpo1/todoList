@@ -18,7 +18,7 @@ const storeProjects = (() => {
     if (localStorage.length === 0) {
       setProjectList();
     } else {
-      const storedProjectList = localStorage.projectList.split(',');
+      const storedProjectList = localStorage.getItem('projectList').split(',');
       storedProjectList.forEach((project) => {
         if (!projectList.includes(project) || projectList.length === 0) {
           projectList.push(project);
