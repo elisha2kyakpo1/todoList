@@ -1,13 +1,19 @@
-import { renderPage } from "./render-page.js";
-import { todoFactory } from "./todo-object.js";
-import { projectFactory, createProjects } from "./project-object.js";
-import { renderToDoObjects } from "./render-todo-objects.js";
-import { storeProjects, storeTodos } from "./storage.js";
-import { renderProjectList } from "./render-projects.js";
+import { renderPage } from './render-page';
+import { todoFactory } from './todo-object';
+import { renderToDoObjects } from './render-todo-objects';
+import {
+  storeProjects,
+  storeTodos,
+  projectFactory,
+  createProjects,
+} from './storage';
+import { renderProjectList } from './render-projects';
 
-const createDefaultProject = (() => {
-    storeProjects.getProjectList();
-    storeProjects.setProjectList();
-    createProjects();
-    renderProjectList();
-})();
+storeProjects.setProjectList();
+createProjects();
+renderProjectList();
+renderToDoObjects();
+storeTodos();
+renderPage();
+todoFactory();
+projectFactory();
