@@ -9,7 +9,7 @@ import {
 } from './storage';
 import { renderProjectList } from './render-projects';
 
-storeProjects.getProjectList();
+// storeProjects.getProjectList();
 storeProjects.setProjectList();
 createProjects();
 renderProjectList();
