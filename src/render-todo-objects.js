@@ -238,9 +238,8 @@ const renderToDoObjects = (project) => {
               1,
               completeTodo.title,
             );
-          }
             break;
-
+          }
           case 'Complete': {
             const incompleteTodo = todoFactory(
               i.title,
@@ -260,8 +259,9 @@ const renderToDoObjects = (project) => {
               1,
               incompleteTodo.title,
             );
-          }
             break;
+          }
+
           default:
         }
         if (content.contains(todoContainer)) {
