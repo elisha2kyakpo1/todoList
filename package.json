@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/elisha2kyakpo1/to-do-list/issues"
   },
-  "homepage": "https://github.com/elisha2kyakpo1/to-do-list#readme"
+  "homepage": "https://github.com/elisha2kyakpo1/to-do-list#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.14.2"
+  }
 }

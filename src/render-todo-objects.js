@@ -1,7 +1,7 @@
 import { todoFactory, createTodos } from './todo-object';
 import { storeTodos } from './storage';
-import { projectAndTodoContainer } from './render-page';
 
+const projectAndTodoCont = document.querySelector('.projectAndTodoContainer');
 const content = document.querySelector('#content');
 
 const renderToDoObjects = (project) => {
@@ -393,6 +393,6 @@ const renderToDoObjects = (project) => {
   });
   todoCreateBtnContainer.append(todoCreateBtn);
   todoContainer.insertAdjacentElement('afterbegin', todoCreateBtnContainer);
-  projectAndTodoContainer.append(todoContainer);
+  projectAndTodoCont.append(todoContainer);
 };
 export { renderToDoObjects, content };
