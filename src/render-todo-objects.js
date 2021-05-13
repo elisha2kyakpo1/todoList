@@ -1,14 +1,14 @@
 import { todoFactory, createTodos } from './todo-object';
 import { storeTodos } from './storage';
 
-const projectAndTodoCont = document.querySelector('.projectAndTodoContainer');
+const projectTodoList = [];
 const content = document.querySelector('#content');
 
 const renderToDoObjects = (project) => {
   const todoContainer = document.createElement('div');
   todoContainer.setAttribute('id', 'todoContainer');
   const todoCompleteBtn = document.createElement('button');
-  if (project.projectTodoList.length > 0) {
+  if (projectTodoList.length > 0) {
     project.projectTodoList.forEach((i) => {
       const todo = document.createElement('div');
       if (i.doneStatus === 'Complete') {
@@ -50,7 +50,7 @@ const renderToDoObjects = (project) => {
       const todoNote = document.createElement('p');
       todoNote.setAttribute('class', 'todoNote');
       if (i.note !== undefined && todo.note !== '') {
-        todoNote.textContent = `Note: \n + ${i.note}`;
+        todoNote.textContent = `Note: \n ${i.note}`;
       }
 
       dueDateContainer.append(todoDueDateHeading);
@@ -393,6 +393,5 @@ const renderToDoObjects = (project) => {
   });
   todoCreateBtnContainer.append(todoCreateBtn);
   todoContainer.insertAdjacentElement('afterbegin', todoCreateBtnContainer);
-  projectAndTodoCont.append(todoContainer);
 };
 export { renderToDoObjects, content };
