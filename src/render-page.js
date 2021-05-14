@@ -2,9 +2,8 @@ const projectAndTodoContainer = document.createElement('div');
 const projectsListContainer = document.createElement('div');
 const projects = document.createElement('div');
 
+const content = document.querySelector('#content');
 const renderPage = (() => {
-  // const content = document.querySelector('#content');
-
   const headingContainer = document.createElement('div');
   headingContainer.setAttribute('id', 'headingContainer');
 
@@ -12,10 +11,10 @@ const renderPage = (() => {
   heading.textContent = 'Todo List';
 
   headingContainer.append(heading);
-  // content.append(headingContainer);
+  content.append(headingContainer);
 
   projectAndTodoContainer.setAttribute('id', 'projectAndTodoContainer');
-  // content.append(projectAndTodoContainer);
+  content.append(projectAndTodoContainer);
 
   projects.setAttribute('id', 'projects');
 
