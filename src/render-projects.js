@@ -96,7 +96,7 @@ const renderProjectList = () => {
   });
 };
 
-const renderProjectCreateBtn = () => {
+const renderProjectCreateBtn = (() => {
   const projectCreateBtnContainer = document.createElement('div');
   projectCreateBtnContainer.setAttribute('id', 'projectCreateBtnContainer');
 
@@ -159,6 +159,6 @@ const renderProjectCreateBtn = () => {
 
   projectCreateBtnContainer.append(projectCreateBtn);
   projects.insertAdjacentElement('afterbegin', projectCreateBtnContainer);
-};
+})();
 
 export { renderProjectList, renderProject, renderProjectCreateBtn };

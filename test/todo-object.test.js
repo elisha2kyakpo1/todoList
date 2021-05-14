@@ -1,7 +1,6 @@
-import { createTodos, todoFactory } from '../src/todo-object';
+import { todoFactory } from '../src/todo-object';
 
 const todo = todoFactory('my title', '02/12/2021', 'Low', 'myProject', 'completed');
-const todoCreate = createTodos('my title', '02/12/2021', 'Low', 'myProject', 'completed');
 test('should have a title property', () => {
   expect(Object.prototype.hasOwnProperty.call(todo, 'title')).toBeTruthy();
 });
