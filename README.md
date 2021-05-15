@@ -70,6 +70,17 @@ Git
 
 Github
 ```
+## Unit Testing
+
+For unit testing please clone the repo and run the tests with two simple steps:
+
+```
+git clone https://github.com/elisha2kyakpo1/todoList.git
+
+git checkout test-todolist
+
+run 'npm run test' on terminal
+```
 
 ## Contributors
 
