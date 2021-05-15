@@ -8,6 +8,7 @@
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
+    "jest": "^26.6.3",
     "stylelint": "^13.12.0",
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
@@ -16,11 +17,9 @@
     "webpack-cli": "^4.6.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "dev": "webpack --mode development",
-
     "build": "webpack --mode production",
-  
     "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
@@ -32,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/elisha2kyakpo1/to-do-list/issues"
   },
-  "homepage": "https://github.com/elisha2kyakpo1/to-do-list#readme"
+  "homepage": "https://github.com/elisha2kyakpo1/to-do-list#readme",
+  "dependencies": {
+    "@babel/preset-env": "^7.14.2"
+  }
 }

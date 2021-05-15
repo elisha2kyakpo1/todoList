@@ -53,7 +53,7 @@ const storeProjects = (() => {
   };
 })();
 
-const storeTodos = (() => {
+const storeTodos = () => {
   const setTodoList = (project) => {
     const storedProjectTodoList = [];
 
@@ -89,7 +89,7 @@ const storeTodos = (() => {
   };
 
   return { setTodoList, getTodoList };
-})();
+};
 
 const projectFactory = (title) => {
   const projectTodoList = [];

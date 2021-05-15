@@ -1,11 +1,14 @@
 const projectAndTodoContainer = document.createElement('div');
+projectAndTodoContainer.setAttribute('class', 'project-todo-container');
 const projectsListContainer = document.createElement('div');
+projectsListContainer.setAttribute('class', 'project-list');
 const projects = document.createElement('div');
+projects.setAttribute('class', 'project-div');
 
 const renderPage = (() => {
+  const headingContainer = document.createElement('div');
   const content = document.querySelector('#content');
 
-  const headingContainer = document.createElement('div');
   headingContainer.setAttribute('id', 'headingContainer');
 
   const heading = document.createElement('h2');
@@ -26,9 +29,4 @@ const renderPage = (() => {
   projects.append(projectsListContainer);
 })();
 
-export {
-  renderPage,
-  projectAndTodoContainer,
-  projectsListContainer,
-  projects,
-};
+export default renderPage;

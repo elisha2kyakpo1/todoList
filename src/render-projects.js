@@ -8,7 +8,6 @@ import {
 } from './storage';
 import { createTodos } from './todo-object';
 import { renderToDoObjects } from './render-todo-objects';
-import { projectsListContainer, projects } from './render-page';
 
 const content = document.querySelector('#content');
 const todoContainer = document.querySelector('#todoContainer');
@@ -23,7 +22,6 @@ const renderProject = (project) => {
   projectTitle.append(project.title);
 
   projectDiv.append(projectTitle);
-  projectsListContainer.append(projectDiv);
 
   const projectRemoveBtn = document.createElement('button');
   projectRemoveBtn.setAttribute('class', 'projectRemoveBtn');
@@ -107,7 +105,6 @@ const renderProjectCreateBtn = (() => {
     projectCreateBtn.remove();
     const createProjectPopup = document.createElement('div');
     createProjectPopup.setAttribute('id', 'createProjectPopup');
-    projects.insertAdjacentElement('afterbegin', createProjectPopup);
 
     const projectTitleText = document.createElement('p');
     projectTitleText.setAttribute('id', 'projectTitleText');
@@ -150,7 +147,6 @@ const renderProjectCreateBtn = (() => {
         projectTitleInput.remove();
         projectSubmitBtn.remove();
         projectCreateBtnContainer.append(projectCreateBtn);
-        projectsListContainer.innerHTML = '';
         renderProjectList();
       }
     });
@@ -158,7 +154,6 @@ const renderProjectCreateBtn = (() => {
   });
 
   projectCreateBtnContainer.append(projectCreateBtn);
-  projects.insertAdjacentElement('afterbegin', projectCreateBtnContainer);
 })();
 
-export { renderProjectList, renderProjectCreateBtn };
+export { renderProjectList, renderProject, renderProjectCreateBtn };
