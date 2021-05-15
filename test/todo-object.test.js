@@ -1,5 +1,5 @@
 import { todoFactory, createTodos } from '../src/todo-object';
-import { projectObjectList, projectFactory } from '../src/storage';
+import { projectFactory } from '../src/storage';
 
 const todo = todoFactory('my title', '02/12/2021', 'Low', 'myProject', 'completed');
 test('should have a title property', () => {
@@ -25,5 +25,5 @@ test('Should create a todo', () => {
   const projectTodo = [];
   const todoObj = projectFactory().addToProjectTodoList(todo);
   projectTodo.push(todoObj);
-  expect(createTodos()).not.toBe(todo);
+  expect(createTodos()).toBe(todo);
 });
