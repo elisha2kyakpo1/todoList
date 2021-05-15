@@ -1,9 +1,7 @@
 import {
   projectList,
-  // storeProjects,
   storeTodos,
   projectFactory,
-  projectObjectList,
   createProjects,
   removeProject,
 } from '../src/storage';
@@ -22,12 +20,17 @@ describe('Todo display tests', () => {
       }
     }
   });
-  test('Creates a new project, creatProjects()', () => {
+  test('Creates a new project, createProjects()', () => {
     const projectObjectListTitles = ['first project', 'second project'];
     for (let i = 0; i < projectObjectListTitles.length; i += 1) {
       if (projectObjectListTitles[i].innerHTML === 'Morning Mommy') {
         expect(createProjects).toContain('second project');
       }
     }
+  });
+  test('Remove project from list', () => {
+    const project = ['first project', 'second project'];
+    removeProject('second project');
+    expect(project[1]).toBe('second project');
   });
 });
