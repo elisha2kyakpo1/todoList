@@ -14,15 +14,15 @@ In this project users can create a project, inside a project, you can create a t
 ## Setup
 
 To get started, you should first get this file in your local machine by cloning or forking this project or typing in your terminal
+```
+ git clone https://github.com/elisha2kyakpo1/todo-list
 
-> git clone https://github.com/elisha2kyakpo1/todo-list
+ cd todo-list
 
-> cd todo-list
+ npm install webpack webpack-cli --save-dev
 
-> npm install webpack webpack-cli --save-dev
-
-> npn install
-
+ npn install
+```
 Just run the command below for webpack to compile the code.
 
 > npx webpack --watch
@@ -36,11 +36,11 @@ Forking the project
 Cloning the project to your local machine
 
 cd into the project directory
+```
+ cd todo-list
 
-> cd todo-list
-
-> Run git checkout -b your-branch-name
-
+ Run git checkout -b your-branch-name
+```
 Make your contributions
 
 Push your branch up to your forked repository
