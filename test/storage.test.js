@@ -4,6 +4,8 @@ import {
   projectFactory,
   createProjects,
   removeProject,
+  storeProjects,
+  projectObjectList,
 } from '../src/storage';
 
 describe('Todo display tests', () => {
@@ -22,15 +24,17 @@ describe('Todo display tests', () => {
   });
   test('Creates a new project, createProjects()', () => {
     const projectObjectListTitles = ['first project', 'second project'];
-    for (let i = 0; i < projectObjectListTitles.length; i += 1) {
-      if (projectObjectListTitles[i].innerHTML === 'Morning Mommy') {
-        expect(createProjects).toContain('second project');
-      }
-    }
+    const myProject = storeProjects.addProjectToList('my project');
+    projectObjectListTitles.push(myProject);
+    expect(projectObjectListTitles.length).toBe(3);
   });
   test('Remove project from list', () => {
-    const project = ['first project', 'second project'];
-    removeProject('second project');
-    expect(project[1]).toBe('second project');
+    const projectObject = storeProjects.addProjectToList('new project');
+    projectObjectList.push(projectObject);
+    removeProject(projectObject);
+    if (projectObjectList.length >= 1) {
+      projectObjectList.splice(projectObjectList.indexOf(projectObject), 1);
+    }
+    expect(projectObjectList.length).toBe(0);
   });
 });
